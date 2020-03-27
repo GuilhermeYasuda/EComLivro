@@ -9,6 +9,7 @@ using Dominio;
 using Core.DAO;
 using Core.Negocio;
 using Dominio.Cliente;
+using Dominio.Livro;
 
 namespace Core.Controle
 {
@@ -52,6 +53,7 @@ namespace Core.Controle
             ValidadorDadosClientePessoaFisica valDadosClientePessoaFisica = new ValidadorDadosClientePessoaFisica();
             ValidadorEndereco valEndereco = new ValidadorEndereco();
             ParametroExcluir paramExcluir = new ParametroExcluir();
+            ValidadorAtivacaoInativacaoLivro valAtivacaoInativacaoLivro = new ValidadorAtivacaoInativacaoLivro();
 
             // instâncias das DAOs
             EnderecoDAO enderecoDAO = new EnderecoDAO();
@@ -66,6 +68,8 @@ namespace Core.Controle
             TipoResidenciaDAO tipoResidenciaDAO = new TipoResidenciaDAO();
             TipoLogradouroDAO tipoLogradouroDAO = new TipoLogradouroDAO();
             ClientePFDAO clientePFDAO = new ClientePFDAO();
+            CategoriaMotivoDAO categoriaMotivoDAO = new CategoriaMotivoDAO();
+            LivroDAO livroDAO = new LivroDAO();
 
             // adicionando as DAOs ao Mapa daos já indicando o indice (nome da classe domínio) de cada um
             daos.Add(typeof(Endereco).Name, enderecoDAO);
@@ -80,6 +84,8 @@ namespace Core.Controle
             daos.Add(typeof(TipoResidencia).Name, tipoResidenciaDAO);
             daos.Add(typeof(TipoLogradouro).Name, tipoLogradouroDAO);
             daos.Add(typeof(ClientePF).Name, clientePFDAO);
+            daos.Add(typeof(CategoriaMotivo).Name, categoriaMotivoDAO);
+            daos.Add(typeof(Livro).Name, livroDAO);
 
             /*
              * CLIENTE X ENDEREÇO - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
@@ -246,6 +252,29 @@ namespace Core.Controle
              * TipoLogradouro - FIM ---------------------------------------------------------------------
              */
 
+            /*
+             * CategoriaMotivo - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarCategoriaMotivo = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarCategoriaMotivo = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirCategoriaMotivo = new List<IStrategy>();
+            List<IStrategy> rnsConsultarCategoriaMotivo = new List<IStrategy>();
+            /*
+             * CategoriaMotivo - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * LIVRO - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarLivro = new List<IStrategy>();
+            List<IStrategy> rnsAlterarLivro = new List<IStrategy>();
+            rnsAlterarLivro.Add(valAtivacaoInativacaoLivro);
+            //List<IStrategy> rnsExcluirLivro = new List<IStrategy>();
+            List<IStrategy> rnsConsultarLivro = new List<IStrategy>();
+            /*
+             * CategoriaMotivo - FIM ---------------------------------------------------------------------
+             */
+
             // criando mapa indicando o indice (operação) e a lista das Stategys(regras) de cada operação
             /*
              * CIDADE - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
@@ -403,6 +432,30 @@ namespace Core.Controle
              * TipoLogradouro - FIM ----------------------------------------------------------------------------
              */
 
+            /*
+             * CategoriaMotivo - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsCategoriaMotivo = new Dictionary<string, List<IStrategy>>();
+            //rnsCategoriaMotivo.Add("SALVAR", rnsSalvarCategoriaMotivo);
+            //rnsCategoriaMotivo.Add("ALTERAR", rnsAlterarCategoriaMotivo);
+            //rnsCategoriaMotivo.Add("EXCLUIR", rnsExcluirCategoriaMotivo);
+            rnsCategoriaMotivo.Add("CONSULTAR", rnsConsultarCategoriaMotivo);
+            /*
+             * CategoriaMotivo - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
+             * LIVRO - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsLivro = new Dictionary<string, List<IStrategy>>();
+            //rnsLivro.Add("SALVAR", rnsSalvarLivro);
+            rnsLivro.Add("ALTERAR", rnsAlterarLivro);
+            //rnsLivro.Add("EXCLUIR", rnsExcluirLivro);
+            rnsLivro.Add("CONSULTAR", rnsConsultarLivro);
+            /*
+             * LIVRO - FIM ----------------------------------------------------------------------------
+             */
+
 
             // adicionando ao mapa geral que conterá todos os mapas
             rns.Add(typeof(ClientePFXEndereco).Name, rnsClienteEndereco);
@@ -417,6 +470,8 @@ namespace Core.Controle
             rns.Add(typeof(TipoResidencia).Name, rnsTipoResidencia);
             rns.Add(typeof(TipoLogradouro).Name, rnsTipoLogradouro);
             rns.Add(typeof(ClientePF).Name, rnsClientePF);
+            rns.Add(typeof(CategoriaMotivo).Name, rnsCategoriaMotivo);
+            rns.Add(typeof(Livro).Name, rnsLivro);
 
         }
         // FIM do CONSTRUTOR da Fachada -------------------------

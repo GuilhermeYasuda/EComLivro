@@ -96,8 +96,10 @@
     <Compile Include="DAO\CartaoCreditoDAO.cs" />
     <Compile Include="DAO\CidadeDAO.cs" />
     <Compile Include="DAO\BandeiraDAO.cs" />
+    <Compile Include="DAO\LivroDAO.cs" />
     <Compile Include="DAO\ClientePFDAO.cs" />
     <Compile Include="DAO\ClientePFXCartaoDAO.cs" />
+    <Compile Include="DAO\CategoriaMotivoDAO.cs" />
     <Compile Include="DAO\TipoLogradouroDAO.cs" />
     <Compile Include="DAO\TipoTelefoneDAO.cs" />
     <Compile Include="DAO\TipoResidenciaDAO.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="Negocio\MetodosComuns.cs" />
     <Compile Include="Negocio\ParametroExcluir.cs" />
     <Compile Include="Negocio\DeleteClienteXEnderecos.cs" />
+    <Compile Include="Negocio\ValidadorAtivacaoInativacaoLivro.cs" />
     <Compile Include="Negocio\ValidadorClienteEndereco.cs" />
     <Compile Include="Negocio\ValidadorClienteCC.cs" />
     <Compile Include="Negocio\ValidadorCartaoCredito.cs" />
@@ -128,8 +131,6 @@
     <Compile Include="Negocio\ValidadorCidade.cs" />
     <Compile Include="Negocio\ValidadorCNPJ.cs" />
     <Compile Include="Negocio\ValidadorCPF.cs" />
-    <Compile Include="Negocio\ValidadorDadosPessoa.cs" />
-    <Compile Include="Negocio\ValidadorDadosPessoaFisica.cs" />
     <Compile Include="Negocio\ValidadorEndereco.cs" />
     <Compile Include="Negocio\ValidadorTelefone.cs" />
     <Compile Include="Program.cs" />

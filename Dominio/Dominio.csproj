@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaMotivo.cs" />
     <Compile Include="Cliente\Bandeira.cs" />
     <Compile Include="Cliente\CartaoCredito.cs" />
     <Compile Include="Cliente\Cidade.cs" />
@@ -102,6 +103,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Livro\Autor.cs" />
+    <Compile Include="Livro\Categoria.cs" />
+    <Compile Include="Livro\Dimensoes.cs" />
+    <Compile Include="Livro\Editora.cs" />
+    <Compile Include="Livro\GrupoPrecificacao.cs" />
+    <Compile Include="Livro\Livro.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

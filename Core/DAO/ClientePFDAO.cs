@@ -43,7 +43,7 @@ namespace Core.DAO
             TelefoneDAO telefoneDAO = new TelefoneDAO(connection, false);
             telefoneDAO.Salvar(cliente.Telefone);
 
-            pst.CommandText = "INSERT INTO tb_cliente_pf (nome_cli_pf, telefone_cli_fk, email_cli_pf, cpf_cli_pf, genero_cli_pf, dt_nascimento_cli_pf, ativo_cli_pf, dt_cadastro_cli_pf) VALUES (:1, :2, :3, :4, :5, :6, :7, :8) RETURNING id_cli_pf ";
+            pst.CommandText = "INSERT INTO tb_cliente_pf (nome_cli_pf, telefone_cli_fk, email_cli_pf, cpf_cli_pf, genero_cli_pf, dt_nascimento_cli_pf, dt_cadastro_cli_pf) VALUES (:1, :2, :3, :4, :5, :6, :7) RETURNING id_cli_pf ";
             parameters = new NpgsqlParameter[]
                 {
                     new NpgsqlParameter("1", cliente.Nome),
@@ -52,8 +52,7 @@ namespace Core.DAO
                     new NpgsqlParameter("4", cliente.CPF),
                     new NpgsqlParameter("5", cliente.Genero),
                     new NpgsqlParameter("6", cliente.DataNascimento),
-                    new NpgsqlParameter("7", cliente.Ativo),
-                    new NpgsqlParameter("8", cliente.DataCadastro)
+                    new NpgsqlParameter("7", cliente.DataCadastro)
                 };
 
             pst.Parameters.Clear();
@@ -88,7 +87,7 @@ namespace Core.DAO
                 connection.Open();
             ClientePF cliente = (ClientePF)entidade;
 
-            pst.CommandText = "UPDATE tb_cliente_pf SET nome_cli_pf = :1, telefone_cli_fk = :2, email_cli_pf = :3, cpf_cli_pf = :4, genero_cli_pf = :5, dt_nascimento_cli_pf = :6, ativo_cli_pf = :7 WHERE id_cli_pf = :8 ";
+            pst.CommandText = "UPDATE tb_cliente_pf SET nome_cli_pf = :1, telefone_cli_fk = :2, email_cli_pf = :3, cpf_cli_pf = :4, genero_cli_pf = :5, dt_nascimento_cli_pf = :6 WHERE id_cli_pf = :7 ";
             parameters = new NpgsqlParameter[]
                 {
                     new NpgsqlParameter("1", cliente.Nome),
@@ -97,8 +96,7 @@ namespace Core.DAO
                     new NpgsqlParameter("4", cliente.CPF),
                     new NpgsqlParameter("5", cliente.Genero),
                     new NpgsqlParameter("6", cliente.DataNascimento),
-                    new NpgsqlParameter("7", cliente.Ativo),
-                    new NpgsqlParameter("8", cliente.ID)
+                    new NpgsqlParameter("7", cliente.ID)
                 };
 
             pst.Parameters.Clear();
@@ -411,14 +409,9 @@ namespace Core.DAO
                 sql.Append("AND dt_nascimento_cli_pf = :26 ");
             }
 
-            if (!cliente.Ativo.Equals("") && !cliente.Ativo.Equals(null))
-            {
-                sql.Append("AND ativo_cli_pf = :27 ");
-            }
-
             if (cliente.DataCadastro != null)
             {
-                sql.Append("AND dt_cadastro_cli_pf = :28 ");
+                sql.Append("AND dt_cadastro_cli_pf = :27 ");
             }
 
             sql.Append("ORDER BY id_cli_pf, tb_endereco.id_endereco, tb_cartao_credito.id_cc ");
@@ -434,8 +427,7 @@ namespace Core.DAO
                     new NpgsqlParameter("17", cliente.Telefone.NumeroTelefone),
                     new NpgsqlParameter("18", cliente.Email),
                     new NpgsqlParameter("24", cliente.CPF),
-                    new NpgsqlParameter("25", cliente.Genero),
-                    new NpgsqlParameter("27", cliente.Ativo)
+                    new NpgsqlParameter("25", cliente.Genero)
                 };
 
             if (cliente.Enderecos.Count > 0)
@@ -486,7 +478,7 @@ namespace Core.DAO
             {
                 NpgsqlParameter[] parametersAux = new NpgsqlParameter[]
                    {
-                    new NpgsqlParameter("28", cliente.DataCadastro)
+                    new NpgsqlParameter("27", cliente.DataCadastro)
                    };
 
                 parameters.Concat(parametersAux);
@@ -599,7 +591,6 @@ namespace Core.DAO
                     cliente.CPF = reader["cpf_cli_pf"].ToString();
                     cliente.Genero = reader["genero_cli_pf"].ToString().First();
                     cliente.DataNascimento = Convert.ToDateTime(reader["dt_nascimento_cli_pf"].ToString());
-                    cliente.Ativo = reader["ativo_cli_pf"].ToString().First();
                     cliente.DataCadastro = Convert.ToDateTime(reader["dt_cadastro_cli_pf"].ToString());
 
                 }

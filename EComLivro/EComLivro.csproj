@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" />
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props" Condition="Exists('..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -203,101 +208,150 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="404.aspx.cs">
+    <Compile Include="Adm\404.aspx.cs">
       <DependentUpon>404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="404.aspx.designer.cs">
+    <Compile Include="Adm\404.aspx.designer.cs">
       <DependentUpon>404.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Analise.aspx.cs">
+    <Compile Include="Adm\Analise.aspx.cs">
       <DependentUpon>Analise.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Analise.aspx.designer.cs">
+    <Compile Include="Adm\Analise.aspx.designer.cs">
       <DependentUpon>Analise.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Animation.aspx.cs">
+    <Compile Include="Adm\Animation.aspx.cs">
       <DependentUpon>Animation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Animation.aspx.designer.cs">
+    <Compile Include="Adm\Animation.aspx.designer.cs">
       <DependentUpon>Animation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\AtivacaoLivro.aspx.cs">
+      <DependentUpon>AtivacaoLivro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\AtivacaoLivro.aspx.designer.cs">
+      <DependentUpon>AtivacaoLivro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\Blank.aspx.cs">
+      <DependentUpon>Blank.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\Blank.aspx.designer.cs">
+      <DependentUpon>Blank.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\Border.aspx.cs">
+      <DependentUpon>Border.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\Border.aspx.designer.cs">
+      <DependentUpon>Border.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\Buttons.aspx.cs">
+      <DependentUpon>Buttons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\Buttons.aspx.designer.cs">
+      <DependentUpon>Buttons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\CadastroCC.aspx.cs">
+      <DependentUpon>CadastroCC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\CadastroCC.aspx.designer.cs">
+      <DependentUpon>CadastroCC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\CadastroCliente.aspx.cs">
+      <DependentUpon>CadastroCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\CadastroCliente.aspx.designer.cs">
+      <DependentUpon>CadastroCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\CadastroEndereco.aspx.cs">
+      <DependentUpon>CadastroEndereco.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\CadastroEndereco.aspx.designer.cs">
+      <DependentUpon>CadastroEndereco.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\Cards.aspx.cs">
+      <DependentUpon>Cards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\Cards.aspx.designer.cs">
+      <DependentUpon>Cards.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\Charts.aspx.cs">
+      <DependentUpon>Charts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\Charts.aspx.designer.cs">
+      <DependentUpon>Charts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\Color.aspx.cs">
+      <DependentUpon>Color.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\Color.aspx.designer.cs">
+      <DependentUpon>Color.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\ListaCliente.aspx.cs">
+      <DependentUpon>ListaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\ListaCliente.aspx.designer.cs">
+      <DependentUpon>ListaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\ListaLivro.aspx.cs">
+      <DependentUpon>ListaLivro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\ListaLivro.aspx.designer.cs">
+      <DependentUpon>ListaLivro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\ListaPedidos.aspx.cs">
+      <DependentUpon>ListaPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\ListaPedidos.aspx.designer.cs">
+      <DependentUpon>ListaPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\MasterPageAdm.Master.cs">
+      <DependentUpon>MasterPageAdm.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\MasterPageAdm.Master.designer.cs">
+      <DependentUpon>MasterPageAdm.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\Others.aspx.cs">
+      <DependentUpon>Others.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\Others.aspx.designer.cs">
+      <DependentUpon>Others.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\Tables.aspx.cs">
+      <DependentUpon>Tables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\Tables.aspx.designer.cs">
+      <DependentUpon>Tables.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Blank.aspx.cs">
-      <DependentUpon>Blank.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Blank.aspx.designer.cs">
-      <DependentUpon>Blank.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Border.aspx.cs">
-      <DependentUpon>Border.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Border.aspx.designer.cs">
-      <DependentUpon>Border.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Buttons.aspx.cs">
-      <DependentUpon>Buttons.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Buttons.aspx.designer.cs">
-      <DependentUpon>Buttons.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CadastroCC.aspx.cs">
-      <DependentUpon>CadastroCC.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CadastroCC.aspx.designer.cs">
-      <DependentUpon>CadastroCC.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CadastroEndereco.aspx.cs">
-      <DependentUpon>CadastroEndereco.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CadastroEndereco.aspx.designer.cs">
-      <DependentUpon>CadastroEndereco.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CadastroCliente.aspx.cs">
-      <DependentUpon>CadastroCliente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CadastroCliente.aspx.designer.cs">
-      <DependentUpon>CadastroCliente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CadastroLivro.aspx.cs">
-      <DependentUpon>CadastroLivro.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CadastroLivro.aspx.designer.cs">
-      <DependentUpon>CadastroLivro.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Cards.aspx.cs">
-      <DependentUpon>Cards.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Cards.aspx.designer.cs">
-      <DependentUpon>Cards.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Charts.aspx.cs">
-      <DependentUpon>Charts.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Charts.aspx.designer.cs">
-      <DependentUpon>Charts.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Color.aspx.cs">
-      <DependentUpon>Color.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Color.aspx.designer.cs">
-      <DependentUpon>Color.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Command\AbstractCommand.cs" />
     <Compile Include="Command\AlterarCommand.cs" />
     <Compile Include="Command\ConsultarCommand.cs" />
@@ -305,87 +359,86 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\SalvarCommand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ListaCliente.aspx.cs">
-      <DependentUpon>ListaCliente.aspx</DependentUpon>
+    <Compile Include="Loja\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListaCliente.aspx.designer.cs">
-      <DependentUpon>ListaCliente.aspx</DependentUpon>
+    <Compile Include="Loja\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListaLivro.aspx.cs">
-      <DependentUpon>ListaLivro.aspx</DependentUpon>
+    <Compile Include="Loja\CheckOut.aspx.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListaLivro.aspx.designer.cs">
-      <DependentUpon>ListaLivro.aspx</DependentUpon>
+    <Compile Include="Loja\CheckOut.aspx.designer.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListaPedidos.aspx.cs">
-      <DependentUpon>ListaPedidos.aspx</DependentUpon>
+    <Compile Include="Loja\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListaPedidos.aspx.designer.cs">
-      <DependentUpon>ListaPedidos.aspx</DependentUpon>
+    <Compile Include="Loja\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPageAdm.Master.cs">
-      <DependentUpon>MasterPageAdm.Master</DependentUpon>
+    <Compile Include="Loja\MastePageLoja.Master.cs">
+      <DependentUpon>MastePageLoja.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterPageAdm.Master.designer.cs">
-      <DependentUpon>MasterPageAdm.Master</DependentUpon>
+    <Compile Include="Loja\MastePageLoja.Master.designer.cs">
+      <DependentUpon>MastePageLoja.Master</DependentUpon>
     </Compile>
-    <Compile Include="Other.aspx.cs">
-      <DependentUpon>Other.aspx</DependentUpon>
+    <Compile Include="Loja\ProductDetails.aspx.cs">
+      <DependentUpon>ProductDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Other.aspx.designer.cs">
-      <DependentUpon>Other.aspx</DependentUpon>
+    <Compile Include="Loja\ProductDetails.aspx.designer.cs">
+      <DependentUpon>ProductDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Loja\Shop.aspx.cs">
+      <DependentUpon>Shop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Loja\Shop.aspx.designer.cs">
+      <DependentUpon>Shop.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tables.aspx.cs">
-      <DependentUpon>Tables.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Tables.aspx.designer.cs">
-      <DependentUpon>Tables.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ViewGenerico.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Cliente\ListaCliente.aspx.cs">
+    <Compile Include="Cliente\ListaCliente.aspx.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Cliente\ListaCliente.aspx.designer.cs">
+    <Compile Include="Cliente\ListaCliente.aspx.designer.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="404.aspx" />
-    <Content Include="Analise.aspx" />
-    <Content Include="Animation.aspx" />
-    <Content Include="Blank.aspx" />
-    <Content Include="Border.aspx" />
-    <Content Include="Buttons.aspx" />
-    <Content Include="CadastroCC.aspx" />
-    <Content Include="CadastroEndereco.aspx" />
-    <Content Include="CadastroCliente.aspx" />
-    <Content Include="CadastroLivro.aspx" />
-    <Content Include="Cards.aspx" />
-    <Content Include="cart.html" />
-    <Content Include="Charts.aspx" />
-    <Content Include="checkout.html" />
-    <Content Include="Color.aspx" />
-    <Content Include="Content\animate.css" />
+    <Content Include="Adm\404.aspx" />
+    <Content Include="Adm\Analise.aspx" />
+    <Content Include="Adm\Animation.aspx" />
+    <Content Include="Adm\AtivacaoLivro.aspx" />
+    <Content Include="Adm\Blank.aspx" />
+    <Content Include="Adm\Border.aspx" />
+    <Content Include="Adm\Buttons.aspx" />
+    <Content Include="Adm\CadastroCC.aspx" />
+    <Content Include="Adm\CadastroCliente.aspx" />
+    <Content Include="Adm\CadastroEndereco.aspx" />
+    <Content Include="Adm\Cards.aspx" />
+    <Content Include="Adm\Charts.aspx" />
+    <Content Include="Adm\Color.aspx" />
+    <Content Include="Adm\Dashboard.aspx" />
+    <Content Include="Adm\forgot-password.html" />
+    <Content Include="Adm\ListaCliente.aspx" />
+    <Content Include="Adm\ListaLivro.aspx" />
+    <Content Include="Adm\ListaPedidos.aspx" />
+    <Content Include="Adm\login.html" />
+    <Content Include="Adm\Others.aspx" />
+    <Content Include="Adm\register.html" />
+    <Content Include="Adm\Tables.aspx" />
     <Content Include="Content\annotations\popup.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -393,23 +446,23 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Chart.css" />
     <Content Include="Content\Chart.min.css" />
-    <Content Include="Content\classy-nav.min.css" />
-    <Content Include="Content\core-style.css" />
-    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\highcharts.css" />
-    <Content Include="Content\jquery-ui.min.css" />
-    <Content Include="Content\magnific-popup.css" />
-    <Content Include="Content\nice-select.css" />
     <Content Include="Content\nunito.css" />
-    <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\stocktools\gui.css" />
-    <Content Include="Content\style.css" />
     <Content Include="Content\themes\dark-unica.css" />
     <Content Include="Content\themes\grid-light.css" />
     <Content Include="Content\themes\sand-signika.css" />
-    <Content Include="Dashboard.aspx" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\classy-nav.min.css" />
+    <Content Include="css\core-style.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\jquery-ui.min.css" />
+    <Content Include="css\magnific-popup.css" />
+    <Content Include="css\nice-select.css" />
+    <Content Include="css\owl.carousel.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -447,20 +500,17 @@
     <Content Include="img\product-img\product4.jpg" />
     <Content Include="img\product-img\product5.jpg" />
     <Content Include="img\product-img\product6.jpg" />
+    <Content Include="img\SEM-IMAGEM.jpg" />
     <Content Include="img\undraw_posting_photo.svg" />
-    <Content Include="index.html" />
-    <Content Include="ListaCliente.aspx" />
-    <Content Include="ListaLivro.aspx" />
-    <Content Include="ListaPedidos.aspx" />
-    <Content Include="login.html" />
-    <Content Include="Other.aspx" />
-    <Content Include="product-details.html" />
-    <Content Include="register.html" />
+    <Content Include="Loja\Cart.aspx" />
+    <Content Include="Loja\CheckOut.aspx" />
+    <Content Include="Loja\Index.aspx" />
+    <Content Include="Loja\ProductDetails.aspx" />
+    <Content Include="Loja\Shop.aspx" />
     <Content Include="Scripts\active.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="img\02.psd" />
-    <Content Include="MasterPageAdm.Master" />
     <Content Include="Content\annotations\popup.scss" />
     <Content Include="Content\stocktools\gui.scss" />
     <Content Include="Content\themes\dark-unica.scss" />
@@ -477,7 +527,9 @@
     <Content Include="fonts\helvetica_neu_bold-webfont.ttf" />
     <Content Include="fonts\helvetica_neu_bold-webfont.woff" />
     <Content Include="fonts\helvetica_neu_bold-webfont.woff2" />
-    <Content Include="Content\core-style.css.map" />
+    <Content Include="Loja\MastePageLoja.Master" />
+    <Content Include="css\core-style.css.map" />
+    <Content Include="Adm\MasterPageAdm.Master" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Chart.bundle.js" />
@@ -490,6 +542,7 @@
     <Content Include="Scripts\demo\chart-pie-demo.js" />
     <Content Include="Scripts\demo\datatables-demo.js" />
     <Content Include="Scripts\highcharts.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -529,9 +582,6 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="shop.html" />
-    <Content Include="style.css" />
-    <Content Include="Tables.aspx" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.js" />
@@ -2127,7 +2177,26 @@
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
-    <Content Include="Views\Cliente\ListaCliente.aspx" />
+    <Content Include="Cliente\ListaCliente.aspx" />
+    <Content Include="TemplateAdm\404.html" />
+    <Content Include="TemplateAdm\blank.html" />
+    <Content Include="TemplateAdm\buttons.html" />
+    <Content Include="TemplateAdm\cards.html" />
+    <Content Include="TemplateAdm\charts.html" />
+    <Content Include="TemplateAdm\forgot-password.html" />
+    <Content Include="TemplateAdm\index.html" />
+    <Content Include="TemplateAdm\login.html" />
+    <Content Include="TemplateAdm\register.html" />
+    <Content Include="TemplateAdm\tables.html" />
+    <Content Include="TemplateAdm\utilities-animation.html" />
+    <Content Include="TemplateAdm\utilities-border.html" />
+    <Content Include="TemplateAdm\utilities-color.html" />
+    <Content Include="TemplateAdm\utilities-other.html" />
+    <Content Include="TemplateLoja\cart.html" />
+    <Content Include="TemplateLoja\checkout.html" />
+    <Content Include="TemplateLoja\index.html" />
+    <Content Include="TemplateLoja\product-details.html" />
+    <Content Include="TemplateLoja\shop.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2342,6 +2411,17 @@
       <Name>Dominio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\cs\Microsoft.CodeAnalysis.VersionCheckAnalyzer.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\Microsoft.CodeAnalysis.VersionCheckAnalyzer.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\analyzers\dotnet\cs\Humanizer.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.CodeQuality.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.CodeQuality.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetCore.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -2375,6 +2455,11 @@
       <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

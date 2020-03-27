@@ -17,15 +17,6 @@ namespace Dominio
             set { _ID = value; }
         }
 
-        // atributo usado para exclusão lógica do sistema
-        private char _ativo;
-
-        public char Ativo
-        {
-            get { return _ativo; }
-            set { _ativo = value; }
-        }
-
         // atributo para conter a data de cadastro no sistemas
         private DateTime ? _dtCadastro;
 
@@ -38,7 +29,6 @@ namespace Dominio
         public EntidadeDominio()
         {
             _ID = 0;
-            _ativo = 'A';
             //_dtCadastro = DateTime.Now;
             _dtCadastro = null;
         }
