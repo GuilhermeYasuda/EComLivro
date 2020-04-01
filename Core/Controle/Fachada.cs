@@ -54,6 +54,7 @@ namespace Core.Controle
             ValidadorEndereco valEndereco = new ValidadorEndereco();
             ParametroExcluir paramExcluir = new ParametroExcluir();
             ValidadorAtivacaoInativacaoLivro valAtivacaoInativacaoLivro = new ValidadorAtivacaoInativacaoLivro();
+            ValidadorDadosEstoque valDadosEstoque = new ValidadorDadosEstoque();
 
             // instâncias das DAOs
             EnderecoDAO enderecoDAO = new EnderecoDAO();
@@ -69,7 +70,11 @@ namespace Core.Controle
             TipoLogradouroDAO tipoLogradouroDAO = new TipoLogradouroDAO();
             ClientePFDAO clientePFDAO = new ClientePFDAO();
             CategoriaMotivoDAO categoriaMotivoDAO = new CategoriaMotivoDAO();
+            CategoriaLivroDAO categoriaLivroDAO = new CategoriaLivroDAO();
+            EditoraDAO editoraDAO = new EditoraDAO();
             LivroDAO livroDAO = new LivroDAO();
+            EstoqueDAO estoqueDAO = new EstoqueDAO();
+            FornecedorDAO fornecedorDAO = new FornecedorDAO();
 
             // adicionando as DAOs ao Mapa daos já indicando o indice (nome da classe domínio) de cada um
             daos.Add(typeof(Endereco).Name, enderecoDAO);
@@ -85,7 +90,11 @@ namespace Core.Controle
             daos.Add(typeof(TipoLogradouro).Name, tipoLogradouroDAO);
             daos.Add(typeof(ClientePF).Name, clientePFDAO);
             daos.Add(typeof(CategoriaMotivo).Name, categoriaMotivoDAO);
+            daos.Add(typeof(Categoria).Name, categoriaLivroDAO);
+            daos.Add(typeof(Editora).Name, editoraDAO);
             daos.Add(typeof(Livro).Name, livroDAO);
+            daos.Add(typeof(Estoque).Name, estoqueDAO);
+            daos.Add(typeof(Fornecedor).Name, fornecedorDAO);
 
             /*
              * CLIENTE X ENDEREÇO - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
@@ -264,6 +273,28 @@ namespace Core.Controle
              */
 
             /*
+             * CategoriaLivro - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarCategoriaLivro = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarCategoriaLivro = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirCategoriaLivro = new List<IStrategy>();
+            List<IStrategy> rnsConsultarCategoriaLivro = new List<IStrategy>();
+            /*
+             * CategoriaLivro - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * EDITORA - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarEditora = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarEditora = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirEditora = new List<IStrategy>();
+            List<IStrategy> rnsConsultarEditora = new List<IStrategy>();
+            /*
+             * EDITORA - FIM ---------------------------------------------------------------------
+             */
+
+            /*
              * LIVRO - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
              */
             //List<IStrategy> rnsSalvarLivro = new List<IStrategy>();
@@ -272,7 +303,33 @@ namespace Core.Controle
             //List<IStrategy> rnsExcluirLivro = new List<IStrategy>();
             List<IStrategy> rnsConsultarLivro = new List<IStrategy>();
             /*
-             * CategoriaMotivo - FIM ---------------------------------------------------------------------
+             * LIVRO - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * ESTOQUE - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            List<IStrategy> rnsSalvarEstoque = new List<IStrategy>();
+            rnsSalvarEstoque.Add(valDadosEstoque);
+            rnsSalvarEstoque.Add(complementoDtCadastro);
+            List<IStrategy> rnsAlterarEstoque = new List<IStrategy>();
+            rnsAlterarEstoque.Add(valDadosEstoque);
+            rnsAlterarEstoque.Add(complementoDtCadastro);
+            List<IStrategy> rnsExcluirEstoque = new List<IStrategy>();
+            List<IStrategy> rnsConsultarEstoque = new List<IStrategy>();
+            /*
+             * ESTOQUE - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * FORNECEDOR - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarFornecedor = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarFornecedor = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirFornecedor = new List<IStrategy>();
+            List<IStrategy> rnsConsultarFornecedor = new List<IStrategy>();
+            /*
+             * FORNECEDOR - FIM ---------------------------------------------------------------------
              */
 
             // criando mapa indicando o indice (operação) e a lista das Stategys(regras) de cada operação
@@ -445,6 +502,30 @@ namespace Core.Controle
              */
 
             /*
+             * CategoriaLivro - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsCategoriaLivro = new Dictionary<string, List<IStrategy>>();
+            //rnsCategoriaLivro.Add("SALVAR", rnsSalvarCategoriaLivro);
+            //rnsCategoriaLivro.Add("ALTERAR", rnsAlterarCategoriaLivro);
+            //rnsCategoriaLivro.Add("EXCLUIR", rnsExcluirCategoriaLivro);
+            rnsCategoriaLivro.Add("CONSULTAR", rnsConsultarCategoriaLivro);
+            /*
+             * CategoriaLivro - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
+             * EDITORA - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsEditora = new Dictionary<string, List<IStrategy>>();
+            //rnsEditora.Add("SALVAR", rnsSalvarEditora);
+            //rnsEditora.Add("ALTERAR", rnsAlterarEditora);
+            //rnsEditora.Add("EXCLUIR", rnsExcluirEditora);
+            rnsEditora.Add("CONSULTAR", rnsConsultarEditora);
+            /*
+             * EDITORA - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
              * LIVRO - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
              */
             Dictionary<string, List<IStrategy>> rnsLivro = new Dictionary<string, List<IStrategy>>();
@@ -456,6 +537,29 @@ namespace Core.Controle
              * LIVRO - FIM ----------------------------------------------------------------------------
              */
 
+            /*
+             * ESTOQUE - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsEstoque = new Dictionary<string, List<IStrategy>>();
+            rnsEstoque.Add("SALVAR", rnsSalvarEstoque);
+            rnsEstoque.Add("ALTERAR", rnsAlterarEstoque);
+            rnsEstoque.Add("EXCLUIR", rnsExcluirEstoque);
+            rnsEstoque.Add("CONSULTAR", rnsConsultarEstoque);
+            /*
+             * ESTOQUE - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
+             * FORNECEDOR - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsFornecedor = new Dictionary<string, List<IStrategy>>();
+            //rnsFornecedor.Add("SALVAR", rnsSalvarFornecedor);
+            //rnsFornecedor.Add("ALTERAR", rnsAlterarFornecedor);
+            //rnsFornecedor.Add("EXCLUIR", rnsExcluirFornecedor);
+            rnsFornecedor.Add("CONSULTAR", rnsConsultarFornecedor);
+            /*
+             * FORNECEDOR - FIM ----------------------------------------------------------------------------
+             */
 
             // adicionando ao mapa geral que conterá todos os mapas
             rns.Add(typeof(ClientePFXEndereco).Name, rnsClienteEndereco);
@@ -471,7 +575,11 @@ namespace Core.Controle
             rns.Add(typeof(TipoLogradouro).Name, rnsTipoLogradouro);
             rns.Add(typeof(ClientePF).Name, rnsClientePF);
             rns.Add(typeof(CategoriaMotivo).Name, rnsCategoriaMotivo);
+            rns.Add(typeof(Categoria).Name, rnsCategoriaLivro);
+            rns.Add(typeof(Editora).Name, rnsEditora);
             rns.Add(typeof(Livro).Name, rnsLivro);
+            rns.Add(typeof(Estoque).Name, rnsEstoque);
+            rns.Add(typeof(Fornecedor).Name, rnsFornecedor);
 
         }
         // FIM do CONSTRUTOR da Fachada -------------------------
@@ -485,7 +593,7 @@ namespace Core.Controle
         {
             resultado = new Resultado();
             string nmClasse = entidade.GetType().Name;
-            string msg = executarRegras(entidade, "SALVAR");
+            string msg = ExecutarRegras(entidade, "SALVAR");
 
             if (string.IsNullOrEmpty(msg))
             {
@@ -506,7 +614,7 @@ namespace Core.Controle
         {
             resultado = new Resultado();
             string nmClasse = entidade.GetType().Name;
-            string msg = executarRegras(entidade, "ALTERAR");
+            string msg = ExecutarRegras(entidade, "ALTERAR");
 
             if (string.IsNullOrEmpty(msg))
             {
@@ -528,7 +636,7 @@ namespace Core.Controle
         {
             resultado = new Resultado();
             string nmClasse = entidade.GetType().Name;
-            string msg = executarRegras(entidade, "CONSULTAR");
+            string msg = ExecutarRegras(entidade, "CONSULTAR");
 
             if (string.IsNullOrEmpty(msg))
             {
@@ -553,7 +661,7 @@ namespace Core.Controle
         {
             resultado = new Resultado();
             string nmClasse = entidade.GetType().Name;
-            string msg = executarRegras(entidade, "EXCLUIR");
+            string msg = ExecutarRegras(entidade, "EXCLUIR");
 
             if (string.IsNullOrEmpty(msg))
             {
@@ -575,7 +683,7 @@ namespace Core.Controle
          * Método que percorrerá a lista que contém as regra que devem ser 
          * executadas para validações e verificações "obrigatórias"
          */
-        private string executarRegras(EntidadeDominio entidade, string operacao)
+        private string ExecutarRegras(EntidadeDominio entidade, string operacao)
         {
             // pega nome da classe
             string nmClasse = entidade.GetType().Name;

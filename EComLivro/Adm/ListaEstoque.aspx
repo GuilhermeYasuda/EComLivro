@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Adm/MasterPageAdm.Master" AutoEventWireup="true" CodeBehind="ListaLivro.aspx.cs" Inherits="EComLivro.Adm.ListaLivro" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Adm/MasterPageAdm.Master" AutoEventWireup="true" CodeBehind="ListaEstoque.aspx.cs" Inherits="EComLivro.Adm.ListaEstoque" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <title>ÉComLivro - Lista de Livros</title>
+    <title>ÉComLivro - Lista de Estoques</title>
 
 </asp:Content>
 
@@ -16,16 +16,16 @@
             <li class="breadcrumb-item">
                 <a href="Dashboard.aspx">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Lista de Livros</li>
+            <li class="breadcrumb-item active">Lista de Estoques</li>
         </ol>
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Lista de Livros</h1>
+        <h1 class="h3 mb-2 text-gray-800">Lista de Estoques</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Lista de Livros
+                <h6 class="m-0 font-weight-bold text-primary">Lista de Estoques
                     
                     <!-- Só é feita a consulta e alteração do status do livro -->
                     <%-- <!-- Botão para adição de livro -->

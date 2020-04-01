@@ -17,7 +17,7 @@ namespace Core.DAO
 
         }
 
-        // construtor para DAOs que também utilizarão o DAO de endereço
+        // construtor para DAOs que também utilizarão o DAO de Cartão
         public CartaoCreditoDAO(NpgsqlConnection connection, bool ctrlTransaction) : base(connection, ctrlTransaction, "tb_cartao_credito", "id_cc")
         {
 
@@ -129,7 +129,7 @@ namespace Core.DAO
                     new NpgsqlParameter("2", cc.NomeImpresso),
                     new NpgsqlParameter("3", cc.NumeroCC),
                     new NpgsqlParameter("4", cc.Bandeira.ID),
-                    new NpgsqlParameter("5", cc.CodigoSeguranca),
+                    new NpgsqlParameter("5", cc.CodigoSeguranca)
                 };
 
             pst.Parameters.Clear();

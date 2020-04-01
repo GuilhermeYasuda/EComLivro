@@ -229,6 +229,13 @@
     <Compile Include="Adm\Animation.aspx.designer.cs">
       <DependentUpon>Animation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Adm\EstoqueLivro.aspx.cs">
+      <DependentUpon>EstoqueLivro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\EstoqueLivro.aspx.designer.cs">
+      <DependentUpon>EstoqueLivro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Adm\AtivacaoLivro.aspx.cs">
       <DependentUpon>AtivacaoLivro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -312,6 +319,13 @@
     </Compile>
     <Compile Include="Adm\ListaCliente.aspx.designer.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\ListaEstoque.aspx.cs">
+      <DependentUpon>ListaEstoque.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\ListaEstoque.aspx.designer.cs">
+      <DependentUpon>ListaEstoque.aspx</DependentUpon>
     </Compile>
     <Compile Include="Adm\ListaLivro.aspx.cs">
       <DependentUpon>ListaLivro.aspx</DependentUpon>
@@ -404,6 +418,7 @@
     <Compile Include="Loja\Shop.aspx.designer.cs">
       <DependentUpon>Shop.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewGenerico.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -420,6 +435,7 @@
     <Content Include="Adm\404.aspx" />
     <Content Include="Adm\Analise.aspx" />
     <Content Include="Adm\Animation.aspx" />
+    <Content Include="Adm\EstoqueLivro.aspx" />
     <Content Include="Adm\AtivacaoLivro.aspx" />
     <Content Include="Adm\Blank.aspx" />
     <Content Include="Adm\Border.aspx" />
@@ -433,6 +449,7 @@
     <Content Include="Adm\Dashboard.aspx" />
     <Content Include="Adm\forgot-password.html" />
     <Content Include="Adm\ListaCliente.aspx" />
+    <Content Include="Adm\ListaEstoque.aspx" />
     <Content Include="Adm\ListaLivro.aspx" />
     <Content Include="Adm\ListaPedidos.aspx" />
     <Content Include="Adm\login.html" />
@@ -2386,7 +2403,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

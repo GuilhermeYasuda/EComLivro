@@ -14,18 +14,17 @@ namespace EComLivro.Loja
 {
     public partial class Index : ViewGenerico
     {
-        private LivroDAO livroDAO = new LivroDAO();
         private Livro livro = new Livro();
 
         protected override void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                ConstruirTabela();
+                ConstruirLista();
             }
         }
 
-        private void ConstruirTabela()
+        private void ConstruirLista()
         {
             int evade = 0;
 
@@ -40,7 +39,7 @@ namespace EComLivro.Loja
                                     "<div class='line'></div>" +
                                     // falta ter o valor de compra do livro (ESTOQUE), por enquanto vou deixar o valor de grupo
                                     //"<p>From $180</p>" +
-                                    "<p>Por R${1}</p>" +
+                                    "<p>Por R$ {1}</p>" +
                                     //"<h4>Modern Chair</h4>" +
                                     "<h4>{2}</h4>" +
                                 "</div>" +
@@ -73,11 +72,26 @@ namespace EComLivro.Loja
                 livro = (Livro)list.ElementAt(i);
                 if (livro.ID != livroAux.ID)
                 {
-                    conteudo.AppendFormat(linha,
-                        livro.ID,
-                        livro.GrupoPrecificacao.MargemLucro.ToString("N2"),
-                        livro.Titulo
-                    );
+                    Estoque estoque = new Estoque();
+                    estoque.Livro.ID = livro.ID;
+                    entidadesAux = commands["CONSULTAR"].execute(estoque).Entidades;
+
+                    if (entidadesAux.Count > 0)
+                    {
+                        conteudo.AppendFormat(linha,
+                            livro.ID,
+                            ((Estoque)entidadesAux.ElementAt(0)).ValorVenda.ToString("N2"),
+                            livro.Titulo
+                        );
+                    }
+                    else
+                    {
+                        conteudo.AppendFormat(linha,
+                            livro.ID,
+                            "-",
+                            livro.Titulo
+                        );
+                    }
 
                     livroAux.ID = livro.ID;
 

@@ -77,7 +77,7 @@
                             <div class="product-meta-data">
                                 <div class="line"></div>
                                 <p class="product-price" id="txtPrecoLivro" runat="server"></p>
-                                <a href="ProductDetails.aspx">
+                                <a>
                                     <h6 id="txtTituloLivro" runat="server"></h6>
                                 </a>
                                 

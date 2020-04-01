@@ -13,6 +13,7 @@ namespace EComLivro
         protected Resultado res { get; set; } = new Resultado();
         protected Dictionary<string, ICommand> commands { get; set; } = new Dictionary<string, ICommand>();
         protected List<EntidadeDominio> entidades = new List<EntidadeDominio>();
+        protected List<EntidadeDominio> entidadesAux = new List<EntidadeDominio>();
         public ViewGenerico()
         {
             commands.Add("SALVAR", new SalvarCommand());

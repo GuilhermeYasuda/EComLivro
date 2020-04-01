@@ -15,10 +15,7 @@ namespace EComLivro.Adm
 {
     public partial class ListaCliente : ViewGenerico
     {
-        private ClientePFDAO clienteDAO = new ClientePFDAO();
         private Dominio.Cliente.ClientePF clientePF = new Dominio.Cliente.ClientePF();
-        private Resultado resultado = new Resultado();
-        private List<EntidadeDominio> res = new List<EntidadeDominio>();
 
         protected override void Page_Load(object sender, EventArgs e)
         {
@@ -105,10 +102,10 @@ namespace EComLivro.Adm
             //if (int.Parse(dropIdDocumento.SelectedValue)>= 0)
             //    produtor.TipoDocumento.ID = int.Parse(dropIdDocumento.SelectedValue);
 
-            res = commands["CONSULTAR"].execute(clientePF).Entidades;
+            entidades = commands["CONSULTAR"].execute(clientePF).Entidades;
             try
             {
-                evade = res.Count;
+                evade = entidades.Count;
             }
             catch
             {
@@ -122,7 +119,7 @@ namespace EComLivro.Adm
 
             for (int i = 0; i < evade; i++)
             {
-                clientePF = (Dominio.Cliente.ClientePF)res.ElementAt(i);
+                clientePF = (Dominio.Cliente.ClientePF)entidades.ElementAt(i);
                 if (clientePF.ID != clienteAux.ID)
                 {
                     conteudo.AppendFormat(linha,

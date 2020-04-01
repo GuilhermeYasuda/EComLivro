@@ -106,7 +106,9 @@
     <Compile Include="Livro\Autor.cs" />
     <Compile Include="Livro\Categoria.cs" />
     <Compile Include="Livro\Dimensoes.cs" />
+    <Compile Include="Livro\Fornecedor.cs" />
     <Compile Include="Livro\Editora.cs" />
+    <Compile Include="Livro\Estoque.cs" />
     <Compile Include="Livro\GrupoPrecificacao.cs" />
     <Compile Include="Livro\Livro.cs" />
     <Compile Include="Program.cs" />

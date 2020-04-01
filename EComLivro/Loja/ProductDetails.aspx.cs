@@ -12,6 +12,7 @@ namespace EComLivro.Loja
     public partial class ProductDetails : ViewGenerico
     {
         Livro livro = new Livro();
+        Estoque estoque = new Estoque();
 
         protected override void Page_Load(object sender, EventArgs e)
         {
@@ -21,13 +22,17 @@ namespace EComLivro.Loja
                 {
                     livro.ID = Convert.ToInt32(Request.QueryString["idLivro"]);
                     txtIdLivro.Text = livro.ID.ToString();
+                    estoque.Livro.ID = livro.ID;
 
                     entidades = commands["CONSULTAR"].execute(livro).Entidades;
                     livro = (Livro)entidades.ElementAt(0);
 
+                    entidades = commands["CONSULTAR"].execute(estoque).Entidades;
+                    estoque = (Estoque)entidades.ElementAt(0);
+
                     txtBreadCrumb.InnerText = livro.Titulo;
                     txtTituloLivro.InnerText = livro.Titulo;
-                    txtPrecoLivro.InnerText = "R$ " + livro.GrupoPrecificacao.MargemLucro.ToString("N2");
+                    txtPrecoLivro.InnerText = "R$ " + estoque.ValorVenda.ToString("N2");
                     txtDescricao.InnerText = livro.Sinopse;
                 }
             }

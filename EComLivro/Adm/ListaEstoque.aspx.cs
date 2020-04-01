@@ -13,9 +13,9 @@ using System.Web.UI.WebControls;
 
 namespace EComLivro.Adm
 {
-    public partial class ListaLivro : ViewGenerico
+    public partial class ListaEstoque : ViewGenerico
     {
-        private Livro livro = new Livro();
+        private Estoque estoque = new Estoque();
 
         protected override void Page_Load(object sender, EventArgs e)
         {
@@ -88,41 +88,25 @@ namespace EComLivro.Adm
 
             string GRID = "<TABLE class='table table-bordered' id='GridViewGeral' width='100%' cellspacing='0'>{0}<TBODY>{1}</TBODY></TABLE>";
             string tituloColunas = "<THEAD><tr>" +
-                "<th>ID</th>" +
+                "<th>ID do Livro</th>" +
                 "<th>Título</th>" +
-                "<th>Autor(es)</th>" +
-                "<th>Categoria(s)</th>" +
-                "<th>Ano</th>" +
+                "<th>Quantidade</th>" +
+                "<th>Custo Unit.</th>" +
+                "<th>Valor Unit.</th>" +
                 "<th>Editora: Cidade</th>" +
-                "<th>Edição</th>" +
-                "<th>ISBN</th>" +
-                "<th>Número de Páginas</th>" +
-                "<th>Sinopse</th>" +
-                "<th>Dimensões (Alt-Lar-Pro-Pes)</th>" +
-                "<th>Grupo de Precificação</th>" +
-                "<th>Código de Barras</th>" +
-                "<th>Status</th>" +
-                "<th>Categoria Motivo</th>" +
-                "<th>Motivo</th>" +
+                "<th>Status do Livro</th>" +
+                "<th>Data Entrada</th>" +
                 "<th>Operações</th>" +
                 "</tr></THEAD>";
             tituloColunas += "<TFOOT><tr>" +
-                "<th>ID</th>" +
+                "<th>ID do Livro</th>" +
                 "<th>Título</th>" +
-                "<th>Autor(es)</th>" +
-                "<th>Categoria(s)</th>" +
-                "<th>Ano</th>" +
+                "<th>Quantidade</th>" +
+                "<th>Custo Unit.</th>" +
+                "<th>Valor Unit.</th>" +
                 "<th>Editora: Cidade</th>" +
-                "<th>Edição</th>" +
-                "<th>ISBN</th>" +
-                "<th>Número de Páginas</th>" +
-                "<th>Sinopse</th>" +
-                "<th>Dimensões (Alt-Lar-Pro-Pes)</th>" +
-                "<th>Grupo de Precificação</th>" +
-                "<th>Código de Barras</th>" +
-                "<th>Status</th>" +
-                "<th>Categoria Motivo</th>" +
-                "<th>Motivo</th>" +
+                "<th>Status do Livro</th>" +
+                "<th>Data Entrada</th>" +
                 "<th>Operações</th>" +
                 "</tr></TFOOT>";
             string linha = "<tr>" +
@@ -134,29 +118,20 @@ namespace EComLivro.Adm
                 "<td>{5}</td>" +
                 "<td>{6}</td>" +
                 "<td>{7}</td>" +
-                "<td>{8}</td>" +
-                "<td>{9}</td>" +
-                "<td>{10}</td>" +
-                "<td>{11}</td>" +
-                "<td>{12}</td>" +
-                "<td>{13}</td>" +
-                "<td>{14}</td>" +
-                "<td>{15}</td>" +
                 "<td style='text-align-last: center;'>" +
-                    "<a class='btn btn-info' href='AtivacaoLivro.aspx?idLivro={0}' title='Ativação/Inativação'>" +
-                        "<div class='fas fa-check'></div></a>" +
-                    // Removido devido que a única operação para livro será ativar e desativar
-                    //"<a class='btn btn-danger' href='CadastroCliente.aspx?delIdClientePF={0}' title='Apagar'>" +
-                    //    "<div class='fas fa-trash-alt'></div></a>" +
+                    "<a class='btn btn-primary' href='EstoqueLivro.aspx?idLivro={0}' title='Dar Entrada'>" +
+                        "<div class='fas fa-plus'></div></a>" +
+                    "<a class='btn btn-danger' href='EstoqueLivro.aspx?delIdLivro={0}' title='Apagar'>" +
+                        "<div class='fas fa-trash-alt'></div></a>" +
                 "</td></tr>";
 
             if (Convert.ToInt32(dropIdCategoriaMotivo.SelectedValue) >= 0)
-                livro.CategoriaMotivo.ID = Convert.ToInt32(dropIdCategoriaMotivo.SelectedValue);
+                estoque.Livro.CategoriaMotivo.ID = Convert.ToInt32(dropIdCategoriaMotivo.SelectedValue);
 
             if (Convert.ToInt32(dropAtivo.SelectedIndex) > 0)
-                livro.CategoriaMotivo.Ativo = dropAtivo.SelectedValue.First();
+                estoque.Livro.CategoriaMotivo.Ativo = dropAtivo.SelectedValue.First();
 
-            entidades = commands["CONSULTAR"].execute(livro).Entidades;
+            entidades = commands["CONSULTAR"].execute(estoque).Entidades;
             try
             {
                 evade = entidades.Count;
@@ -168,81 +143,27 @@ namespace EComLivro.Adm
 
             StringBuilder conteudo = new StringBuilder();
 
-            Livro livroAux = new Livro();
-            livroAux.ID = 0;
-
             for (int i = 0; i < evade; i++)
             {
-                livro = (Livro)entidades.ElementAt(i);
-                if (livro.ID != livroAux.ID)
-                {
+                estoque = (Estoque)entidades.ElementAt(i);
                     conteudo.AppendFormat(linha,
-                    livro.ID,
-                    livro.Titulo,
-                    AutoresToString(livro),
-                    CategoriasToString(livro),
-                    livro.Ano,
-                    livro.Editora.Nome + ": " + livro.Editora.Cidade.Nome,
-                    livro.Edicao,
-                    livro.ISBN,
-                    livro.NumeroPaginas,
-                    livro.Sinopse,
-                    livro.Dimensoes.Altura + "mm-" + livro.Dimensoes.Largura + "mm-" + livro.Dimensoes.Profundidade + "mm-" + livro.Dimensoes.Peso + "kg",
-                    livro.GrupoPrecificacao.Nome + " - " + livro.GrupoPrecificacao.MargemLucro,
-                    livro.CodigoBarras,
-                    livro.CategoriaMotivo.Ativo,
-                    "ID: " + livro.CategoriaMotivo.ID + " - " + livro.CategoriaMotivo.Nome,
-                    livro.Motivo
+                    estoque.Livro.ID,
+                    estoque.Livro.Titulo,
+                    estoque.Qtde,
+                    estoque.ValorCusto,
+                    estoque.ValorVenda,
+                    estoque.Fornecedor.Nome + ": " + estoque.Fornecedor.Cidade.Nome,
+                    estoque.Livro.CategoriaMotivo.Ativo + " - " + estoque.Livro.CategoriaMotivo.Nome,
+                    estoque.DataCadastro
                     );
 
-                    livroAux.ID = livro.ID;
-                }
             }
             string tabelafinal = string.Format(GRID, tituloColunas, conteudo.ToString());
             divTable.InnerHtml = tabelafinal;
-            livro.ID = 0;
+            estoque.ID = estoque.Livro.ID = 0;
 
             // Rodapé da tabela informativo de quando foi a última vez que foi atualizada a lista
             lblRodaPeTabela.InnerText = "Lista atualizada em " + DateTime.Now.ToString();
-        }
-
-        public string AutoresToString(Livro livro)
-        {
-            string retorno = "";
-            
-            foreach (Autor autor in livro.Autores)
-            {
-                retorno += "ID: " + autor.ID + ", " +
-                    autor.Nome + " " + 
-                    "<br />";
-            }
-
-            return retorno;
-        }
-
-        public string CategoriasToString(Livro livro)
-        {
-            string retorno = "";
-            // ordena lista de categorias
-            List<Categoria> categorias = livro.Categorias.OrderBy(c => c.ID).ToList();
-            for (int i = 0; i < categorias.Count; i++)
-            {
-                if(i == 0 || categorias[i].ID != categorias[i - 1].ID)
-                {
-                    retorno += "ID: " + categorias[i].ID + ", " +
-                       categorias[i].Nome + " " +
-                       //categoria.Descricao + ", " +      // não será colocado por que ficará muito extenso
-                       "<br /> ";
-                }
-                // como se caso tiver 2 autores e 2 categorias, na hora de ter o retorno do BD, sempre vai repetir
-                // então na hora que fizer a ordenagem na lista, vai se repetir e cair no if anterior
-                //else if (i == categorias.Count)
-                //{
-
-                //}
-            }
-
-            return retorno;
         }
 
         protected void DropAtivo_SelectedIndexChanged(object sender, EventArgs e)

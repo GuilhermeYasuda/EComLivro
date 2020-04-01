@@ -93,7 +93,11 @@
     <Compile Include="Core\IFachada.cs" />
     <Compile Include="Core\IStrategy.cs" />
     <Compile Include="DAO\AbstractDAO.cs" />
+    <Compile Include="DAO\FornecedorDAO.cs" />
+    <Compile Include="DAO\EstoqueDAO.cs" />
     <Compile Include="DAO\CartaoCreditoDAO.cs" />
+    <Compile Include="DAO\EditoraDAO.cs" />
+    <Compile Include="DAO\CategoriaLivroDAO.cs" />
     <Compile Include="DAO\CidadeDAO.cs" />
     <Compile Include="DAO\BandeiraDAO.cs" />
     <Compile Include="DAO\LivroDAO.cs" />
@@ -122,6 +126,7 @@
     <Compile Include="Negocio\ParametroExcluir.cs" />
     <Compile Include="Negocio\DeleteClienteXEnderecos.cs" />
     <Compile Include="Negocio\ValidadorAtivacaoInativacaoLivro.cs" />
+    <Compile Include="Negocio\ValidadorDadosEstoque.cs" />
     <Compile Include="Negocio\ValidadorClienteEndereco.cs" />
     <Compile Include="Negocio\ValidadorClienteCC.cs" />
     <Compile Include="Negocio\ValidadorCartaoCredito.cs" />

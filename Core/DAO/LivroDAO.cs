@@ -78,7 +78,7 @@ namespace Core.DAO
             {
                 if (livro.Autores.ElementAt(0).ID != 0)
                 {
-                    sql.Append("AND id_autor = :2 ");
+                    sql.Append("AND tb_autor.id_autor = :2 ");
                 }
 
                 if (!String.IsNullOrEmpty(livro.Autores.ElementAt(0).Nome))
@@ -91,7 +91,7 @@ namespace Core.DAO
             {
                 if (livro.Categorias.ElementAt(0).ID != 0)
                 {
-                    sql.Append("AND id_cat_livro = :4 ");
+                    sql.Append("AND tb_cat_livro.id_cat_livro = :4 ");
                 }
 
                 if (!String.IsNullOrEmpty(livro.Categorias.ElementAt(0).Nome))
