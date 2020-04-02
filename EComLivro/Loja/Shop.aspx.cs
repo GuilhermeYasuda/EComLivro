@@ -115,7 +115,7 @@ namespace EComLivro.Loja
                                         //    "<i class='fa fa-star' aria-hidden='true'></i>" +
                                         //"</div>" +
                                         "<div class='cart'>" +
-                                            "<a href = 'Cart.aspx' data-toggle='tooltip' data-placement='left' title='Adicionar ao Carrinho'>" +
+                                            "<a href = 'AddToCart.aspx?idLivro={0}' data-toggle='tooltip' data-placement='left' title='Adicionar ao Carrinho'>" +
                                                 "<img src = '../img/core-img/cart.png' alt=''></a>" +
                                         "</div>" +
                                     "</div>" +

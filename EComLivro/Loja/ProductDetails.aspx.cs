@@ -34,6 +34,11 @@ namespace EComLivro.Loja
                     txtTituloLivro.InnerText = livro.Titulo;
                     txtPrecoLivro.InnerText = "R$ " + estoque.ValorVenda.ToString("N2");
                     txtDescricao.InnerText = livro.Sinopse;
+
+                    btnAddToCart.InnerHtml = string.Format(
+                        "<a class='btn amado-btn' href='AddToCart.aspx?idLivro={0}' title='Adicionar ao Carrinho'>" +
+                        "Adicionar ao Carrinho</a>",
+                        livro.ID);
                 }
             }
         }

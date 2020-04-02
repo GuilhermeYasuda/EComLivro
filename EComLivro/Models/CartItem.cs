@@ -10,17 +10,21 @@ namespace EComLivro.Models
     public class CartItem
     {
         [Key]
-        public string ItemId { get; set; }
+        public string item_id { get; set; }
 
-        public string CartId { get; set; }
+        public string cart_id { get; set; }
 
-        public int Quantidade { get; set; }
+        public int quantidade { get; set; }
 
-        public System.DateTime DataCriada { get; set; }
+        public System.DateTime data_criada { get; set; }
 
-        public int LivroId { get; set; }
+        public int livro_id { get; set; }
 
-        public virtual Livro Livro { get; set; }
+        public string titulo_livro { get; set; }
+
+        public float valor_venda { get; set; }
+
+        //public virtual Livro Livro { get; set; }
 
     }
 }

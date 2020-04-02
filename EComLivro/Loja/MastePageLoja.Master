@@ -33,11 +33,11 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="search-content">
-                            <form action="#" method="get">
+                            <%--<form action="#" method="get">
                                 <input type="search" name="search" id="search" placeholder="Type your keyword...">
                                 <button type="submit">
                                     <img src="../img/core-img/search.png" alt=""></button>
-                            </form>
+                            </form>--%>
                         </div>
                     </div>
                 </div>
@@ -76,27 +76,26 @@
                     <ul>
                         <li class="active"><a href="Index.aspx">Home</a></li>
                         <li><a href="Shop.aspx">Shop</a></li>
-                        <li><a href="ProductDetails.aspx">Product</a></li>
-                        <li><a href="Cart.aspx">Cart</a></li>
+                        <%--<li><a href="ShoppingCart.aspx" ID="cartCount" runat="server">Carrinho</a></li>--%>
                         <li><a href="CheckOut.aspx">Checkout</a></li>
                     </ul>
                 </nav>
                 <!-- Button Group -->
                 <div class="amado-btn-group mt-30 mb-100">
-                    <a href="#" class="btn amado-btn mb-15">%Discount%</a>
-                    <a href="#" class="btn amado-btn active">New this week</a>
+                    <%--<a href="#" class="btn amado-btn mb-15">%Discount%</a>
+                    <a href="#" class="btn amado-btn active">New this week</a>--%>
                 </div>
                 <!-- Cart Menu -->
                 <div class="cart-fav-search mb-100">
-                    <a href="Cart.aspx" class="cart-nav">
+                    <a href="ShoppingCart.aspx" class="cart-nav">
                         <img src="../img/core-img/cart.png" alt="">
-                        Cart <span>(0)</span></a>
-                    <a href="#" class="fav-nav">
+                        Carrinho <span ID="cartCount" runat="server">(0)</span></a>
+                    <%--<a href="#" class="fav-nav">
                         <img src="../img/core-img/favorites.png" alt="">
                         Favourite</a>
                     <a href="#" class="search-nav">
                         <img src="../img/core-img/search.png" alt="">
-                        Search</a>
+                        Search</a>--%>
                 </div>
                 <!-- Social Button -->
                 <div class="social-info d-flex justify-content-between">
