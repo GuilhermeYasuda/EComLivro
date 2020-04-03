@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// As informações gerais sobre um assembly são controladas através do seguinte
+// As Informações Gerais sobre um assembly são controladas por meio do 
 // conjunto de atributos a seguir. Altere esses valores de atributo para modificar as informações
 // associadas a um assembly.
 [assembly: AssemblyTitle("EComLivro")]
@@ -14,22 +14,22 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Definir ComVisible como falso torna não visíveis os tipos neste assembly
-// para componentes COM. Caso precise acessar um tipo neste assembly a partir de
+// Configurar o ComVisible como false torna os tipos desse assembly invisíveis 
+// para componentes COM.  Se for necessário acessar um tipo nesse assembly a partir do 
 // COM, defina o atributo ComVisible como true nesse tipo.
 [assembly: ComVisible(false)]
 
 // A GUID a seguir será referente à ID do typelib se este projeto for exposto ao COM
-[assembly: Guid("f4cfb7dd-1112-423c-ba8c-545f2bb75eac")]
+[assembly: Guid("3f3042ec-3029-4dd9-8791-63fb7498be41")]
 
-// As informações de versão de um assembly consistem nos seguintes quatro valores:
+// As informações de versão de um assembly consistem nos quatro valores a seguir:
 //
-//      Versão Principal
-//      Versão Secundária
-//      Número da Versão
-//      Revisão
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
 //
-// É possível especificar todos os valores ou definir como padrão os números de revisão e de versão
+// É possível especificar todos os valores ou utilizar como padrão os Números de Revisão e da Versão 
 // usando o '*' como mostrado abaixo:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
