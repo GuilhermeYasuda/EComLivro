@@ -7,115 +7,52 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-
+    
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="Dashboard.aspx">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Lista de Pedidos</li>
+        </ol>
+
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Pedidos</h1>
-        <%--          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>--%>
+        <h1 class="h3 mb-2 text-gray-800">Lista de Pedidos</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Lista de Pedidos</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Lista de Pedidos
+                
+<%--                    <!-- Botão para adição de produtor -->
+                    <a class="btn btn-primary fa-pull-right" href="CadastroCliente.aspx" title="Novo Cliente">
+                        <div class="fas fa-fw fa-plus"></div>
+                    </a>--%>
+
+                </h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Quantidade de Itens</th>
-                                <th>Método de Pagamento</th>
-                                <th>Método de Envio</th>
-                                <th>Cadastro</th>
-                                <th>Status</th>
-                                <th>Operações</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Quantidade de Itens</th>
-                                <th>Método de Pagamento</th>
-                                <th>Método de Envio</th>
-                                <th>Cadastro</th>
-                                <th>Status</th>
-                                <th>Operações</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>Cartão de crédito</td>
-                                <td>PAC</td>
-                                <td>20/02/2020</td>
-                                <td>EM TRANSPORTE</td>
-                                <td style='text-align-last: center;'>
-                                    <a class="btn btn-info" href="CadastroLivro.aspx" title="Vizualizar">
-                                        <div class="fas fa-eye"></div>
-                                    </a>
-                                    <a class="btn btn-success" href="ListaLivro.aspx" title="Ok">
-                                        <div class="fas fa-check"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>Cartão de crédito</td>
-                                <td>SEDEX</td>
-                                <td>20/02/2020</td>
-                                <td>EM PROCESSAMENTO</td>
-                                <td style='text-align-last: center;'>
-                                    <a class="btn btn-info" href="CadastroLivro.aspx" title="Vizualizar">
-                                        <div class="fas fa-eye"></div>
-                                    </a>
-                                    <a class="btn btn-success" href="ListaLivro.aspx" title="Ok">
-                                        <div class="fas fa-check"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>Cartão de crédito
-                                    CUPOM
-                                </td>
-                                <td>PAC</td>
-                                <td>20/02/2020</td>
-                                <td>ENTREGUE</td>
-                                <td style='text-align-last: center;'>
-                                    <a class="btn btn-info" href="CadastroLivro.aspx" title="Vizualizar">
-                                        <div class="fas fa-eye"></div>
-                                    </a>
-                                    <a class="btn btn-success" href="ListaLivro.aspx" title="Ok">
-                                        <div class="fas fa-check"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>4</td>
-                                <td>CUPOM</td>
-                                <td>SEDEX</td>
-                                <td>20/02/2020</td>
-                                <td>EM TRANSPORTE</td>
-                                <td style='text-align-last: center;'>
-                                    <a class="btn btn-info" href="CadastroLivro.aspx" title="Vizualizar">
-                                        <div class="fas fa-eye"></div>
-                                    </a>
-                                    <a class="btn btn-success" href="ListaLivro.aspx" title="Ok">
-                                        <div class="fas fa-check"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <%--<asp:Panel runat="server" GroupingText="Filtro" >
+                        Tipo do Documento: <asp:DropDownList AutoPostBack="true" ID="dropIdDocumento" DataTextField="Name" DataValueField="ID" CssClass="form-control" runat="server" OnSelectedIndexChanged="dropIdDocumento_SelectedIndexChanged"></asp:DropDownList>
+                    </asp:Panel>--%>
+                    
+                    <br />
+                    <div id="divTable" class="table table-bordered" runat="server" >
+                        
+                    </div>
+                    <asp:GridView runat="server" CssClass="display" ID="GridViewGeral" EnableModelValidation="True" Width="204px" >
+                        <HeaderStyle Font-Bold="true" />
+                    </asp:GridView >
+
                 </div>
+                <asp:Label id="lblResultado" runat="server" Visible="false"></asp:Label>
             </div>
+            
+            <div class="card-footer small text-muted" id="lblRodaPeTabela" runat="server"></div>
         </div>
 
     </div>

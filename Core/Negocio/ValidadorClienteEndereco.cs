@@ -27,7 +27,7 @@ namespace Core.Negocio
                 // verifica se cc está vazio ou nulo
                 if(clientePFXEndereco.Endereco == null)
                 {
-                    sb.Append("CARTÃO DE CRÉDITO É UM CAMPO OBRIGATÓRIO! <br />");
+                    sb.Append("ENDEREÇO É UM CAMPO OBRIGATÓRIO! <br />");
                 } else
                 {
                     ValidadorEndereco valEndereco = new ValidadorEndereco();

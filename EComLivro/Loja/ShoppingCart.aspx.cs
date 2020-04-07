@@ -28,11 +28,12 @@ namespace EComLivro.Loja
                 else
                 {
                     lblTotal.Text = "-";
-                    ShoppingCartTitle.InnerText = "Shopping Cart is Empty";
+                    ShoppingCartTitle.InnerText = "Carrinho está vazio!";
                     UpdateBtn.Visible = false;
+                    CartTotal.Visible = false;
+                    CheckoutBtn.Visible = false;
                 }
             }
-            UpdateBtn.Click += new EventHandler(this.UpdateBtn_Click);
         }
 
         public List<CartItem> GetShoppingCartItems()
@@ -86,6 +87,15 @@ namespace EComLivro.Loja
         protected void UpdateBtn_Click(object sender, EventArgs e)
         {
             UpdateCartItems();
+        }
+
+        protected void CheckoutBtn_Click(object sender, EventArgs e)
+        {
+            using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())
+            {
+                Session["payment_amt"] = usersShoppingCart.GetTotal();
+            }
+            Response.Redirect("~/Checkout/CheckoutStart.aspx");
         }
     }
 }

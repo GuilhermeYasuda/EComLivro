@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-12 col-lg-8">
                     <div class="cart-title mt-50">
-                        <h2 id="ShoppingCartTitle" runat="server">Shopping Cart</h2>
+                        <h2 id="ShoppingCartTitle" runat="server">Carrinho</h2>
                     </div>
 
                     <div class="cart-table clearfix">
@@ -43,7 +43,7 @@
                                         </span>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Remover Item" HeaderStyle-Width="20%">
+                                <asp:TemplateField HeaderText="Remover Item" HeaderStyle-Width="20%" >
                                     <ItemTemplate>
                                         <asp:CheckBox ID="Remover" runat="server"></asp:CheckBox>
                                     </ItemTemplate>
@@ -52,26 +52,26 @@
                         </asp:GridView>
                     </div>
 
-                    <asp:Button ID="UpdateBtn" runat="server" Text="Update" OnClick="UpdateBtn_Click" />
+                    <asp:Button ID="UpdateBtn" CssClass="btn amado-btn w-100" runat="server" Text="Atualizar Carrinho" OnClick="UpdateBtn_Click" />
 
                 </div>
                 <div class="col-12 col-lg-4">
-                    <div class="cart-summary">
-                        <h5>Cart Total</h5>
+                    <div class="cart-summary" id="CartTotal" runat="server">
+                        <h5>Total Carrinho</h5>
                         <ul class="summary-table">
                             <li>
                                 <span>
-                                    <asp:Label ID="LabelTotalText" runat="server" Text="Total do Pedido: "></asp:Label>
+                                    <asp:Label ID="LabelTotalText" runat="server" Text="Subtotal do Pedido: "></asp:Label>
                                 </span>
                                 <span>
                                     <asp:Label ID="lblTotal" runat="server" EnableViewState="false"></asp:Label>
                                 </span>
                             </li>
-                            <li><span>delivery:</span> <span>Free</span></li>
-                            <li><span>total:</span> <span>$140.00</span></li>
+                            <%--<li><span>delivery:</span> <span>Free</span></li>
+                            <li><span>total:</span> <span>$140.00</span></li>--%>
                         </ul>
                         <div class="cart-btn mt-100">
-                            <a href="cart.html" class="btn amado-btn w-100">Checkout</a>
+                            <asp:Button ID="CheckoutBtn" CssClass="btn amado-btn w-100" runat="server" OnClick="CheckoutBtn_Click" Text="Checkout"/>
                         </div>
                     </div>
                 </div>

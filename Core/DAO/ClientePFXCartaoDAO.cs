@@ -95,7 +95,7 @@ namespace Core.DAO
                 }
             }
 
-            sql.Append("ORDER BY id_cliente ");
+            sql.Append("ORDER BY tb_cliente_cartao.id_cliente,tb_cliente_cartao.id_cartao ");
 
             pst.CommandText = sql.ToString();
             parameters = new NpgsqlParameter[]

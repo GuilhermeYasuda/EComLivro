@@ -85,12 +85,11 @@ namespace EComLivro.Logic
         {
             if (HttpContext.Current.Session[CartSessionKey] == null)
             {
-                // falta imprementação de login
-                //if (!string.IsNullOrWhiteSpace(HttpContext.Current.User.Identity.Name))
-                //{
-                //    HttpContext.Current.Session[CartSessionKey] = HttpContext.Current.User.Identity.Name;
-                //}
-                //else
+                if (!string.IsNullOrWhiteSpace(HttpContext.Current.User.Identity.Name))
+                {
+                    HttpContext.Current.Session[CartSessionKey] = HttpContext.Current.User.Identity.Name;
+                }
+                else
                 {
                     // gera um novo GUID randomico
                     Guid tempCartId = Guid.NewGuid();
@@ -237,6 +236,17 @@ namespace EComLivro.Logic
             public int LivroId;
             public int PurchaseQuantity;
             public bool RemoverItem;
+        }
+
+        public void MigrateCart(string cartId, string userName)
+        {
+            var shoppingCart = _db.ShoppingCartItems.Where(c => c.cart_id == cartId);
+            foreach (CartItem item in shoppingCart)
+            {
+                item.cart_id = userName;
+            }
+            HttpContext.Current.Session[CartSessionKey] = userName;
+            _db.SaveChanges();
         }
     }
 }

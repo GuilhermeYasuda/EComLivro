@@ -11,7 +11,7 @@ namespace EComLivro.Models
     {
         [Key]
         public string item_id { get; set; }
-
+        
         public string cart_id { get; set; }
 
         public int quantidade { get; set; }

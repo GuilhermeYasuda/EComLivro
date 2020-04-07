@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace EComLivro.Loja
+namespace EComLivro.Checkout
 {
-    public partial class CheckOut : System.Web.UI.Page
+    public partial class CheckoutCancel : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

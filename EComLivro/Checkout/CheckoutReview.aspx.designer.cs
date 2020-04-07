@@ -7,47 +7,38 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace EComLivro.Adm
+namespace EComLivro.Checkout
 {
 
 
-    public partial class ListaPedidos
+    public partial class CheckoutReview
     {
 
         /// <summary>
-        /// Controle divTable.
+        /// Controle OrderItemList.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTable;
+        protected global::System.Web.UI.WebControls.GridView OrderItemList;
 
         /// <summary>
-        /// Controle GridViewGeral.
+        /// Controle ShipInfo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewGeral;
+        protected global::System.Web.UI.WebControls.DetailsView ShipInfo;
 
         /// <summary>
-        /// Controle lblResultado.
+        /// Controle CheckoutConfirm.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResultado;
-
-        /// <summary>
-        /// Controle lblRodaPeTabela.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRodaPeTabela;
+        protected global::System.Web.UI.WebControls.Button CheckoutConfirm;
     }
 }

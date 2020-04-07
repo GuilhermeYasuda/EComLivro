@@ -270,6 +270,11 @@
     <Content Include="Adm\Others.aspx" />
     <Content Include="Adm\register.html" />
     <Content Include="Adm\Tables.aspx" />
+    <Content Include="Checkout\CheckoutCancel.aspx" />
+    <Content Include="Checkout\CheckoutComplete.aspx" />
+    <Content Include="Checkout\CheckoutError.aspx" />
+    <Content Include="Checkout\CheckoutReview.aspx" />
+    <Content Include="Checkout\CheckoutStart.aspx" />
     <Content Include="Cliente\ListaCliente.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\annotations\popup.css" />
@@ -331,6 +336,7 @@
     <Content Include="fonts\helvetica_neu_bold-webfont.woff2" />
     <Content Include="img\02.psd" />
     <Content Include="Loja\MastePageLoja.Master" />
+    <Content Include="Checkout\Web.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="img\01a.jpg" />
@@ -368,7 +374,6 @@
     <Content Include="img\SEM-IMAGEM.jpg" />
     <Content Include="img\undraw_posting_photo.svg" />
     <Content Include="Loja\AddToCart.aspx" />
-    <Content Include="Loja\CheckOut.aspx" />
     <Content Include="Loja\Index.aspx" />
     <Content Include="Loja\ProductDetails.aspx" />
     <Content Include="Loja\Shop.aspx" />
@@ -2478,6 +2483,41 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Checkout\CheckoutCancel.aspx.cs">
+      <DependentUpon>CheckoutCancel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutCancel.aspx.designer.cs">
+      <DependentUpon>CheckoutCancel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutComplete.aspx.cs">
+      <DependentUpon>CheckoutComplete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutComplete.aspx.designer.cs">
+      <DependentUpon>CheckoutComplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutError.aspx.cs">
+      <DependentUpon>CheckoutError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutError.aspx.designer.cs">
+      <DependentUpon>CheckoutError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutReview.aspx.cs">
+      <DependentUpon>CheckoutReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutReview.aspx.designer.cs">
+      <DependentUpon>CheckoutReview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutStart.aspx.cs">
+      <DependentUpon>CheckoutStart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutStart.aspx.designer.cs">
+      <DependentUpon>CheckoutStart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cliente\ListaCliente.aspx.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2516,13 +2556,6 @@
     </Compile>
     <Compile Include="Loja\AddToCart.aspx.designer.cs">
       <DependentUpon>AddToCart.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Loja\CheckOut.aspx.cs">
-      <DependentUpon>CheckOut.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Loja\CheckOut.aspx.designer.cs">
-      <DependentUpon>CheckOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Loja\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -2565,6 +2598,8 @@
     <Compile Include="Models\Livro.cs" />
     <Compile Include="Models\LivroContext.cs" />
     <Compile Include="Models\LivroMap.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

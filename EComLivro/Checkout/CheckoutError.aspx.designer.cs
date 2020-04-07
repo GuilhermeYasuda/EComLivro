@@ -7,11 +7,11 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace EComLivro.Loja
+namespace EComLivro.Checkout
 {
 
 
-    public partial class CheckOut
+    public partial class CheckoutError
     {
     }
 }

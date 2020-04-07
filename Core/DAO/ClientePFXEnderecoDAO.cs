@@ -77,6 +77,11 @@ namespace Core.DAO
             StringBuilder sql = new StringBuilder();
 
             sql.Append("SELECT * FROM tb_cliente_endereco JOIN tb_endereco ON (tb_cliente_endereco.id_endereco = tb_endereco.id_endereco) ");
+            sql.Append("                                    JOIN tb_cidades ON (tb_endereco.cidade_fk = tb_cidades.id_cidade) ");
+            sql.Append("                                    JOIN tb_estados ON (tb_cidades.estado_id = tb_estados.id_estado) ");
+            sql.Append("                                    JOIN tb_paises ON (tb_estados.pais_id = tb_paises.id_pais) ");
+            sql.Append("                                    JOIN tb_tipo_residencia ON (tb_endereco.tipo_residencia_fk = tb_tipo_residencia.id_tipo_res) ");
+            sql.Append("                                    JOIN tb_tipo_logradouro ON (tb_endereco.tipo_logradouro_fk = tb_tipo_logradouro.id_tipo_log) ");
 
             // WHERE sem efeito, usado apenas para poder diminuir o número de ifs da construção da query
             sql.Append("WHERE 1 = 1 ");
@@ -94,7 +99,7 @@ namespace Core.DAO
                 }
             }
 
-            sql.Append("ORDER BY id_cliente ");
+            sql.Append("ORDER BY tb_cliente_endereco.id_cliente, tb_cliente_endereco.id_endereco ");
 
             pst.CommandText = sql.ToString();
             parameters = new NpgsqlParameter[]

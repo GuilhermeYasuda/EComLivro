@@ -15,6 +15,8 @@ namespace EComLivro.Models
 
         public DbSet<CartItem> ShoppingCartItems { get; set; }
         public DbSet<Livro> Livros { get; set; }        // EComLivro.Models.Livro.cs
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

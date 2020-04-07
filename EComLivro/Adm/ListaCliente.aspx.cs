@@ -99,9 +99,6 @@ namespace EComLivro.Adm
                         "<div class='fas fa-trash-alt'></div></a>" +
                 "</td></tr>";
 
-            //if (int.Parse(dropIdDocumento.SelectedValue)>= 0)
-            //    produtor.TipoDocumento.ID = int.Parse(dropIdDocumento.SelectedValue);
-
             entidades = commands["CONSULTAR"].execute(clientePF).Entidades;
             try
             {
@@ -114,28 +111,44 @@ namespace EComLivro.Adm
 
             StringBuilder conteudo = new StringBuilder();
 
-            ClientePF clienteAux = new ClientePF();
-            clienteAux.ID = 0;
-
-            for (int i = 0; i < evade; i++)
+            // lista para conter todos clientes retornados do BD
+            List<ClientePF> clientes = new List<ClientePF>();
+            foreach (ClientePF cliente in entidades)
             {
-                clientePF = (Dominio.Cliente.ClientePF)entidades.ElementAt(i);
-                if (clientePF.ID != clienteAux.ID)
-                {
-                    conteudo.AppendFormat(linha,
-                    clientePF.ID,
-                    clientePF.Nome,
-                    clientePF.CPF,
-                    clientePF.DataNascimento,
-                    "(" + clientePF.Telefone.DDD + ")" + clientePF.Telefone.NumeroTelefone,
-                    clientePF.Email,
-                    EnderecosToString(clientePF),
-                    CartoesToString(clientePF),
-                    clientePF.DataCadastro
-                    );
+                clientes.Add(cliente);
+            }
 
-                    clienteAux.ID = clientePF.ID;
+            foreach (var cliente in clientes)
+            {
+                // para pesquisar os endereços que o cliente tem
+
+                // passa ID de cliente e consulta na tabela n-n
+                foreach (ClientePFXEndereco clienteXEndereco in
+                    commands["CONSULTAR"].execute(new ClientePFXEndereco { ID = cliente.ID }).Entidades)
+                {
+                    // Passa endereços para o cliente
+                    cliente.Enderecos.Add(clienteXEndereco.Endereco);
                 }
+
+                // passa ID de cliente e consulta na tabela n-n
+                foreach (ClientePFXCC clienteXCC in
+                    commands["CONSULTAR"].execute(new ClientePFXCC { ID = cliente.ID }).Entidades)
+                {
+                    // Passa ccs para o cliente
+                    cliente.CartoesCredito.Add(clienteXCC.CC);
+                }
+
+                conteudo.AppendFormat(linha,
+                cliente.ID,
+                cliente.Nome,
+                cliente.CPF,
+                cliente.DataNascimento,
+                "(" + cliente.Telefone.DDD + ")" + cliente.Telefone.NumeroTelefone,
+                cliente.Email,
+                EnderecosToString(cliente),
+                CartoesToString(cliente),
+                cliente.DataCadastro
+                );
             }
             string tabelafinal = string.Format(GRID, tituloColunas, conteudo.ToString());
             divTable.InnerHtml = tabelafinal;

@@ -93,6 +93,11 @@
     <Compile Include="Core\IFachada.cs" />
     <Compile Include="Core\IStrategy.cs" />
     <Compile Include="DAO\AbstractDAO.cs" />
+    <Compile Include="DAO\PedidoDAO.cs" />
+    <Compile Include="DAO\PedidoDetalheDAO.cs" />
+    <Compile Include="DAO\CCPedidoDAO.cs" />
+    <Compile Include="DAO\CupomDAO.cs" />
+    <Compile Include="DAO\PedidoXCupomDAO.cs" />
     <Compile Include="DAO\FornecedorDAO.cs" />
     <Compile Include="DAO\EstoqueDAO.cs" />
     <Compile Include="DAO\CartaoCreditoDAO.cs" />
@@ -104,6 +109,8 @@
     <Compile Include="DAO\ClientePFDAO.cs" />
     <Compile Include="DAO\ClientePFXCartaoDAO.cs" />
     <Compile Include="DAO\CategoriaMotivoDAO.cs" />
+    <Compile Include="DAO\StatusPedidoDAO.cs" />
+    <Compile Include="DAO\TipoCupomDAO.cs" />
     <Compile Include="DAO\TipoLogradouroDAO.cs" />
     <Compile Include="DAO\TipoTelefoneDAO.cs" />
     <Compile Include="DAO\TipoResidenciaDAO.cs" />
@@ -126,6 +133,8 @@
     <Compile Include="Negocio\ParametroExcluir.cs" />
     <Compile Include="Negocio\DeleteClienteXEnderecos.cs" />
     <Compile Include="Negocio\ValidadorAtivacaoInativacaoLivro.cs" />
+    <Compile Include="Negocio\ValidadorStatusPedido.cs" />
+    <Compile Include="Negocio\ValidadorDadosPedido.cs" />
     <Compile Include="Negocio\ValidadorDadosEstoque.cs" />
     <Compile Include="Negocio\ValidadorClienteEndereco.cs" />
     <Compile Include="Negocio\ValidadorClienteCC.cs" />

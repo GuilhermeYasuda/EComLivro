@@ -203,6 +203,7 @@
                             <%--<h6 class="collapse-header">Cadastro:</h6>--%>
                             <a class="collapse-item" href="CadastroLivro.aspx">Cadastro de Livro</a>
                             <a class="collapse-item" href="ListaLivro.aspx">Lista de Livros</a>
+                            <a class="collapse-item" href="ListaEstoque.aspx">Lista de Estoques</a>
                         </div>
                     </div>
                 </li>

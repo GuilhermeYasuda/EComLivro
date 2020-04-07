@@ -42,6 +42,15 @@ namespace EComLivro.Loja
         protected global::System.Web.UI.WebControls.Button UpdateBtn;
 
         /// <summary>
+        /// Controle CartTotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CartTotal;
+
+        /// <summary>
         /// Controle LabelTotalText.
         /// </summary>
         /// <remarks>
@@ -58,5 +67,14 @@ namespace EComLivro.Loja
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotal;
+
+        /// <summary>
+        /// Controle CheckoutBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CheckoutBtn;
     }
 }

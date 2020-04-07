@@ -10,6 +10,7 @@ using Core.DAO;
 using Core.Negocio;
 using Dominio.Cliente;
 using Dominio.Livro;
+using Dominio.Venda;
 
 namespace Core.Controle
 {
@@ -55,6 +56,8 @@ namespace Core.Controle
             ParametroExcluir paramExcluir = new ParametroExcluir();
             ValidadorAtivacaoInativacaoLivro valAtivacaoInativacaoLivro = new ValidadorAtivacaoInativacaoLivro();
             ValidadorDadosEstoque valDadosEstoque = new ValidadorDadosEstoque();
+            ValidadorDadosPedido valDadosPedido = new ValidadorDadosPedido();
+            ValidadorStatusPedido valStatusPedido = new ValidadorStatusPedido();
 
             // instâncias das DAOs
             EnderecoDAO enderecoDAO = new EnderecoDAO();
@@ -75,6 +78,13 @@ namespace Core.Controle
             LivroDAO livroDAO = new LivroDAO();
             EstoqueDAO estoqueDAO = new EstoqueDAO();
             FornecedorDAO fornecedorDAO = new FornecedorDAO();
+            CupomDAO cupomDAO = new CupomDAO();
+            TipoCupomDAO tipoCupomDAO = new TipoCupomDAO();
+            PedidoXCupomDAO clientePFXCupomDAO = new PedidoXCupomDAO();
+            StatusPedidoDAO statusPedidoDAO = new StatusPedidoDAO();
+            PedidoDetalheDAO pedidoDetalheDAO = new PedidoDetalheDAO();
+            CCPedidoDAO ccPedidoDAO = new CCPedidoDAO();
+            PedidoDAO pedidoDAO = new PedidoDAO();
 
             // adicionando as DAOs ao Mapa daos já indicando o indice (nome da classe domínio) de cada um
             daos.Add(typeof(Endereco).Name, enderecoDAO);
@@ -95,6 +105,15 @@ namespace Core.Controle
             daos.Add(typeof(Livro).Name, livroDAO);
             daos.Add(typeof(Estoque).Name, estoqueDAO);
             daos.Add(typeof(Fornecedor).Name, fornecedorDAO);
+            daos.Add(typeof(Cupom).Name, cupomDAO);
+            daos.Add(typeof(TipoCupom).Name, tipoCupomDAO);
+            daos.Add(typeof(PedidoXCupom).Name, clientePFXCupomDAO);
+            daos.Add(typeof(StatusPedido).Name, statusPedidoDAO);
+            daos.Add(typeof(PedidoDetalhe).Name, pedidoDetalheDAO);
+            daos.Add(typeof(CartaoCreditoPedido).Name, ccPedidoDAO);
+            daos.Add(typeof(Pedido).Name, pedidoDAO);
+
+            #region CRIAÇÃO DA LISTA DE STRATEGYS
 
             /*
              * CLIENTE X ENDEREÇO - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
@@ -105,7 +124,7 @@ namespace Core.Controle
             //rnsAlterarClienteEndereco.Add(validadorClienteEndereco);
             //List<IStrategy> rnsExcluirClienteEndereco = new List<IStrategy>();
             //rnsExcluirClienteCartao.Add(paramExcluir);
-            //List<IStrategy> rnsConsultarClienteEndereco = new List<IStrategy>();
+            List<IStrategy> rnsConsultarClienteEndereco = new List<IStrategy>();
             /*
              * CLIENTE X ENDEREÇO - FIM ---------------------------------------------------------------------
              */
@@ -186,7 +205,7 @@ namespace Core.Controle
             //rnsAlterarClienteCartao.Add(validadorClienteCC);
             //List<IStrategy> rnsExcluirClienteCartao = new List<IStrategy>();
             //rnsExcluirClienteCartao.Add(paramExcluir);
-            //List<IStrategy> rnsConsultarClienteCartao = new List<IStrategy>();
+            List<IStrategy> rnsConsultarClienteCartao = new List<IStrategy>();
             /*
              * CLIENTE X CARTÃO - FIM ---------------------------------------------------------------------
              */
@@ -332,6 +351,92 @@ namespace Core.Controle
              * FORNECEDOR - FIM ---------------------------------------------------------------------
              */
 
+            /*
+             * CUPOM - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            List<IStrategy> rnsSalvarCupom = new List<IStrategy>();
+            List<IStrategy> rnsAlterarCupom = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirCupom = new List<IStrategy>();
+            List<IStrategy> rnsConsultarCupom = new List<IStrategy>();
+            /*
+             * CUPOM - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * TipoCupom - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarTipoCupom = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarTipoCupom = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirTipoCupom = new List<IStrategy>();
+            List<IStrategy> rnsConsultarTipoCupom = new List<IStrategy>();
+            /*
+             * TipoCupom - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * CLIENTE X CUPOM - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            List<IStrategy> rnsSalvarClienteCupom = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarClienteCupom = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirClienteCupom = new List<IStrategy>();
+            List<IStrategy> rnsConsultarClienteCupom = new List<IStrategy>();
+            /*
+             * CLIENTE X CUPOM - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * StatusPedido - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarStatusPedido = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarStatusPedido = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirStatusPedido = new List<IStrategy>();
+            List<IStrategy> rnsConsultarStatusPedido = new List<IStrategy>();
+            /*
+             * StatusPedido - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * CCPedido - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarCCPedido = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarCCPedido = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirCCPedido = new List<IStrategy>();
+            List<IStrategy> rnsConsultarCCPedido = new List<IStrategy>();
+            /*
+             * CCPedido - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * PedidoDetalhe - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarPedidoDetalhe = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarPedidoDetalhe = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirPedidoDetalhe = new List<IStrategy>();
+            List<IStrategy> rnsConsultarPedidoDetalhe = new List<IStrategy>();
+            /*
+             * PedidoDetalhe - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * Pedido - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            List<IStrategy> rnsSalvarPedido = new List<IStrategy>();
+            rnsSalvarPedido.Add(complementoDtCadastro);
+            rnsSalvarPedido.Add(valDadosPedido);
+            rnsSalvarPedido.Add(valStatusPedido);
+            List<IStrategy> rnsAlterarPedido = new List<IStrategy>();
+            rnsAlterarPedido.Add(complementoDtCadastro);
+            rnsAlterarPedido.Add(valStatusPedido);
+            //List<IStrategy> rnsExcluirPedido = new List<IStrategy>();
+            List<IStrategy> rnsConsultarPedido = new List<IStrategy>();
+            /*
+             * Pedido - FIM ---------------------------------------------------------------------
+             */
+
+            #endregion
+
+            #region CRIAÇÃO DA LISTA DE REGRAS PARA CADA OPERAÇÂO
+
             // criando mapa indicando o indice (operação) e a lista das Stategys(regras) de cada operação
             /*
              * CIDADE - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
@@ -376,7 +481,7 @@ namespace Core.Controle
             rnsClienteEndereco.Add("SALVAR", rnsSalvarClienteEndereco);
             //rnsClienteEndereco.Add("ALTERAR", rnsAlterarClienteEndereco);
             //rnsClienteEndereco.Add("EXCLUIR", rnsExcluirClienteEndereco);
-            //rnsClienteEndereco.Add("CONSULTAR", rnsConsultarClienteEndereco);
+            rnsClienteEndereco.Add("CONSULTAR", rnsConsultarClienteEndereco);
             /*
              * CLIENTE X ENDEREÇO - FIM ----------------------------------------------------------------------------
              */
@@ -412,7 +517,7 @@ namespace Core.Controle
             rnsClienteCartao.Add("SALVAR", rnsSalvarClienteCartao);
             //rnsClienteCartao.Add("ALTERAR", rnsAlterarClienteCartao);
             //rnsClienteCartao.Add("EXCLUIR", rnsExcluirClienteCartao);
-            //rnsClienteCartao.Add("CONSULTAR", rnsConsultarClienteCartao);
+            rnsClienteCartao.Add("CONSULTAR", rnsConsultarClienteCartao);
             /*
              * CLIENTE X CARTÃO - FIM ----------------------------------------------------------------------------
              */
@@ -561,6 +666,92 @@ namespace Core.Controle
              * FORNECEDOR - FIM ----------------------------------------------------------------------------
              */
 
+            /*
+             * Cupom - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsCupom = new Dictionary<string, List<IStrategy>>();
+            rnsCupom.Add("SALVAR", rnsSalvarCupom);
+            rnsCupom.Add("ALTERAR", rnsAlterarCupom);
+            //rnsCupom.Add("EXCLUIR", rnsExcluirCupom);
+            rnsCupom.Add("CONSULTAR", rnsConsultarCupom);
+            /*
+             * Cupom - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
+             * TipoCupom - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsTipoCupom = new Dictionary<string, List<IStrategy>>();
+            //rnsTipoCupom.Add("SALVAR", rnsSalvarTipoCupom);
+            //rnsTipoCupom.Add("ALTERAR", rnsAlterarTipoCupom);
+            //rnsTipoCupom.Add("EXCLUIR", rnsExcluirTipoCupom);
+            rnsTipoCupom.Add("CONSULTAR", rnsConsultarTipoCupom);
+            /*
+             * TipoCupom - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
+             * CLIENTE X CUPOM - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsClienteCupom = new Dictionary<string, List<IStrategy>>();
+            rnsClienteCupom.Add("SALVAR", rnsSalvarClienteCupom);
+            //rnsClienteCupom.Add("ALTERAR", rnsAlterarClienteCupom);
+            //rnsClienteCupom.Add("EXCLUIR", rnsExcluirClienteCupom);
+            rnsClienteCupom.Add("CONSULTAR", rnsConsultarClienteCupom);
+            /*
+             * CLIENTE X CUPOM - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
+             * StatusPedido - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsStatusPedido = new Dictionary<string, List<IStrategy>>();
+            //rnsStatusPedido.Add("SALVAR", rnsSalvarStatusPedido);
+            //rnsStatusPedido.Add("ALTERAR", rnsAlterarStatusPedido);
+            //rnsStatusPedido.Add("EXCLUIR", rnsExcluirStatusPedido);
+            rnsStatusPedido.Add("CONSULTAR", rnsConsultarStatusPedido);
+            /*
+             * StatusPedido - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
+             * CCPedido - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsCCPedido = new Dictionary<string, List<IStrategy>>();
+            //rnsCCPedido.Add("SALVAR", rnsSalvarCCPedido);
+            //rnsCCPedido.Add("ALTERAR", rnsAlterarCCPedido);
+            //rnsCCPedido.Add("EXCLUIR", rnsExcluirCCPedido);
+            rnsCCPedido.Add("CONSULTAR", rnsConsultarCCPedido);
+            /*
+             * CCPedido - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
+             * PedidoDetalhe - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsPedidoDetalhe = new Dictionary<string, List<IStrategy>>();
+            //rnsPedidoDetalhe.Add("SALVAR", rnsSalvarPedidoDetalhe);
+            //rnsPedidoDetalhe.Add("ALTERAR", rnsAlterarPedidoDetalhe);
+            //rnsPedidoDetalhe.Add("EXCLUIR", rnsExcluirPedidoDetalhe);
+            rnsPedidoDetalhe.Add("CONSULTAR", rnsConsultarPedidoDetalhe);
+            /*
+             * PedidoDetalhe - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
+             * Pedido - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsPedido = new Dictionary<string, List<IStrategy>>();
+            rnsPedido.Add("SALVAR", rnsSalvarPedido);
+            rnsPedido.Add("ALTERAR", rnsAlterarPedido);
+            //rnsPedido.Add("EXCLUIR", rnsExcluirPedido);
+            rnsPedido.Add("CONSULTAR", rnsConsultarPedido);
+            /*
+             * Pedido - FIM ----------------------------------------------------------------------------
+             */
+
+            #endregion
+
             // adicionando ao mapa geral que conterá todos os mapas
             rns.Add(typeof(ClientePFXEndereco).Name, rnsClienteEndereco);
             rns.Add(typeof(Endereco).Name, rnsEndereco);
@@ -580,6 +771,13 @@ namespace Core.Controle
             rns.Add(typeof(Livro).Name, rnsLivro);
             rns.Add(typeof(Estoque).Name, rnsEstoque);
             rns.Add(typeof(Fornecedor).Name, rnsFornecedor);
+            rns.Add(typeof(Cupom).Name, rnsCupom);
+            rns.Add(typeof(TipoCupom).Name, rnsTipoCupom);
+            rns.Add(typeof(PedidoXCupom).Name, rnsClienteCupom);
+            rns.Add(typeof(StatusPedido).Name, rnsStatusPedido);
+            rns.Add(typeof(CartaoCreditoPedido).Name, rnsCCPedido);
+            rns.Add(typeof(PedidoDetalhe).Name, rnsPedidoDetalhe);
+            rns.Add(typeof(Pedido).Name, rnsPedido);
 
         }
         // FIM do CONSTRUTOR da Fachada -------------------------
