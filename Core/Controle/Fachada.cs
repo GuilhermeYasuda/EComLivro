@@ -58,6 +58,9 @@ namespace Core.Controle
             ValidadorDadosEstoque valDadosEstoque = new ValidadorDadosEstoque();
             ValidadorDadosPedido valDadosPedido = new ValidadorDadosPedido();
             ValidadorStatusPedido valStatusPedido = new ValidadorStatusPedido();
+            ValidadorAtualizaPedido valAtualizaPedido = new ValidadorAtualizaPedido();
+            ValidadorExistenciaCPF valExistenciaCPF = new ValidadorExistenciaCPF();
+            ValidadorExistenciaEmail valExistenciaEmail = new ValidadorExistenciaEmail();
 
             // instâncias das DAOs
             EnderecoDAO enderecoDAO = new EnderecoDAO();
@@ -184,6 +187,8 @@ namespace Core.Controle
              */
             List<IStrategy> rnsSalvarClientePF = new List<IStrategy>();
             rnsSalvarClientePF.Add(valDadosClientePessoaFisica);
+            rnsSalvarClientePF.Add(valExistenciaCPF);
+            rnsSalvarClientePF.Add(valExistenciaEmail);
             rnsSalvarClientePF.Add(complementoDtCadastro);
             List<IStrategy> rnsAlterarClientePF = new List<IStrategy>();
             rnsAlterarClientePF.Add(valDadosClientePessoaFisica);
@@ -425,8 +430,9 @@ namespace Core.Controle
             rnsSalvarPedido.Add(valDadosPedido);
             rnsSalvarPedido.Add(valStatusPedido);
             List<IStrategy> rnsAlterarPedido = new List<IStrategy>();
-            rnsAlterarPedido.Add(complementoDtCadastro);
+            rnsAlterarPedido.Add(complementoDtCadastro); 
             rnsAlterarPedido.Add(valStatusPedido);
+            rnsAlterarPedido.Add(valAtualizaPedido);
             //List<IStrategy> rnsExcluirPedido = new List<IStrategy>();
             List<IStrategy> rnsConsultarPedido = new List<IStrategy>();
             /*

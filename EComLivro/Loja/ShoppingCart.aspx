@@ -51,6 +51,8 @@
                             </Columns>
                         </asp:GridView>
                     </div>
+                    
+                    <asp:Label ID="lblResultadoCarrinho" CssClass="text-danger" runat="server" Visible="false"></asp:Label>
 
                     <asp:Button ID="UpdateBtn" CssClass="btn amado-btn w-100" runat="server" Text="Atualizar Carrinho" OnClick="UpdateBtn_Click" />
 

@@ -175,16 +175,10 @@
             </div>
         </div>
 
-        <%-- div necessária para fazer a clonagem dos campos de endereço --%>
         <div id="idEnderecoCabecalho">
             <hr class="sidebar-divider" />
             <div class="sidebar-heading mb-3">
                 Dados de Endereço
-
-                    <!-- Botão para adição de endereço -->
-                <%-- <span id="btnAddEndereco" class="btn btn-primary fa-pull-right btn-sm" style="cursor: pointer;">
-                    <i class="fas fa-fw fa-plus"></i>
-                </span> --%>
             </div>
 
             <asp:TextBox ID="txtIdEndereco" type="hidden" runat="server" CssClass="form-control form-control-user" Placeholder="ID Endereco"></asp:TextBox>

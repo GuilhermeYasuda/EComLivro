@@ -33,6 +33,15 @@ namespace EComLivro.Loja
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Controle adminLink.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor adminLink;
+
+        /// <summary>
         /// Controle cartCount.
         /// </summary>
         /// <remarks>

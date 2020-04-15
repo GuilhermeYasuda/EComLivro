@@ -33,6 +33,15 @@ namespace EComLivro.Loja
         protected global::System.Web.UI.WebControls.GridView CartList;
 
         /// <summary>
+        /// Controle lblResultadoCarrinho.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResultadoCarrinho;
+
+        /// <summary>
         /// Controle UpdateBtn.
         /// </summary>
         /// <remarks>

@@ -2,6 +2,7 @@
 using Dominio.Venda;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -17,13 +18,48 @@ namespace EComLivro.Adm
         {
             if (!IsPostBack)
             {
-                //dropIdDocumento.DataSource = TipoDocumentoDatatable(commands["CONSULTAR"].execute(new TipoDocumento()).Entidades.Cast<TipoDocumento>().ToList());
-                //dropIdDocumento.DataBind();
+                dropIdStatus.DataSource = CategoriaMotivoDatatable(commands["CONSULTAR"].execute(new StatusPedido()).Entidades.Cast<StatusPedido>().ToList());
+                dropIdStatus.DataValueField = "ID";
+                dropIdStatus.DataTextField = "Name";
+                dropIdStatus.DataBind();
 
                 ConstruirTabela();
+
+                if (!string.IsNullOrEmpty(Request.QueryString["resultadoAtualiza"]))
+                {
+                    lblResultadoAtualiza.Visible = true;
+                    lblResultadoAtualiza.Text = Request.QueryString["resultadoAtualiza"];
+                }
+                else
+                {
+                    lblResultadoAtualiza.Visible = false;
+                    lblResultadoAtualiza.Text = "";
+                }
             }
         }
 
+        public static DataTable CategoriaMotivoDatatable(List<StatusPedido> input)
+        {
+            DataTable data = new DataTable();
+            data.Columns.Add(new DataColumn("ID", typeof(int)));
+            data.Columns.Add(new DataColumn("Name", typeof(string)));
+
+            DataRow dr = data.NewRow();
+            dr[0] = 0;
+            dr[1] = "Selecione um Status de Pedido";
+            data.Rows.Add(dr);
+
+            int a = input.Count;
+            for (int i = 0; i < a; i++)
+            {
+                StatusPedido status = input.ElementAt(i);
+                dr = data.NewRow();
+                dr[0] = status.ID;
+                dr[1] = status.Nome;
+                data.Rows.Add(dr);
+            }
+            return data;
+        }
 
         private void ConstruirTabela()
         {
@@ -58,24 +94,9 @@ namespace EComLivro.Adm
                 "<th>Data Ent/Atual</th>" +
                 "<th>Operações</th>" +
                 "</tr></TFOOT>";
-            string linha = "<tr>" +
-                "<td>{0}</td>" +
-                "<td>{1}</td>" +
-                "<td>{2}</td>" +
-                "<td>{3}</td>" +
-                "<td>{4}</td>" +
-                "<td>{5}</td>" +
-                "<td>{6}</td>" +
-                "<td>{7}</td>" +
-                "<td>{8}</td>" +
-                "<td>{9}</td>" +
-                "<td>{10}</td>" +
-                "<td style='text-align-last: center;'>" +
-                    "<a class='btn btn-warning' href='CadastroCliente.aspx?idClientePF={0}' title='Editar'>" +
-                        "<div class='fas fa-edit'></div></a>" +
-                    "<a class='btn btn-danger' href='CadastroCliente.aspx?delIdClientePF={0}' title='Apagar'>" +
-                        "<div class='fas fa-trash-alt'></div></a>" +
-                "</td></tr>";
+
+            if (Convert.ToInt32(dropIdStatus.SelectedValue) >= 0)
+                pedido.Status.ID = Convert.ToInt32(dropIdStatus.SelectedValue);
 
             entidades = commands["CONSULTAR"].execute(pedido).Entidades;
             try
@@ -131,6 +152,31 @@ namespace EComLivro.Adm
                 {
                     // Passa cupom troca para o pedido
                     pedido.CuponsTroca.Add(cupom);
+                }
+
+                string linha = "<tr>" +
+               "<td>{0}</td>" +
+               "<td>{1}</td>" +
+               "<td>{2}</td>" +
+               "<td>{3}</td>" +
+               "<td>{4}</td>" +
+               "<td>{5}</td>" +
+               "<td>{6}</td>" +
+               "<td>{7}</td>" +
+               "<td>{8}</td>" +
+               "<td>{9}</td>" +
+               "<td>{10}</td>";
+
+                if (pedido.Status.ID == 3 || pedido.Status.ID == 5 || pedido.Status.ID == 8)
+                {
+                    linha += "<td></td></tr>";
+                }
+                else
+                {
+                    linha += "<td style='text-align-last: center;'>" +
+                                "<a class='btn btn-success' href='AtualizaPedido.aspx?idPedido={0}' title='Avançar'>" +
+                                    "<div class='fas fa-chevron-right'></div></a>" +
+                            "</td></tr>";
                 }
 
                 conteudo.AppendFormat(linha,
@@ -225,6 +271,11 @@ namespace EComLivro.Adm
                 cupom.Tipo.Nome + "</br> ";
 
             return retorno;
+        }
+
+        protected void dropIdStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ConstruirTabela();
         }
     }
 }

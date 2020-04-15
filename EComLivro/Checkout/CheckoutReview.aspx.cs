@@ -46,14 +46,34 @@ namespace EComLivro.Checkout
                 }
 
 
-                    // Set OrderId.
-                    Session["currentOrderId"] = pedido.ID;
+                // Set OrderId.
+                Session["currentOrderId"] = pedido.ID;
 
-                // Exibi as informações do Pedido
+                // Exibi as informações Entrega
                 List<Pedido> listaPedido = new List<Pedido>();
                 listaPedido.Add(pedido);
                 ShipInfo.DataSource = listaPedido;
                 ShipInfo.DataBind();
+
+                // Exibi as informações Status
+                List<Pedido> listaStatus = new List<Pedido>();
+                listaStatus.Add(pedido);
+                StatusDetail.DataSource = listaStatus;
+                StatusDetail.DataBind();
+
+                // Exibi as informações Total
+                List<Pedido> listaTotal = new List<Pedido>();
+                listaTotal.Add(pedido);
+                TotalDetail.DataSource = listaTotal;
+                TotalDetail.DataBind();
+
+                if (pedido.Status.ID == 6 || pedido.Status.ID == 7 || pedido.Status.ID == 8)
+                {
+                    ShipInfo.Visible = false;
+                } else
+                {
+                    ShipInfo.Visible = true;
+                }
 
                 // Mostra os detalhes do pedido
                 OrderItemList.DataSource = pedido.Detalhes;

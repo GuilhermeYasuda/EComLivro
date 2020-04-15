@@ -8,6 +8,7 @@ using Npgsql;
 using System.Data;
 using Dominio.Cliente;
 using Dominio.Venda;
+using Dominio.Livro;
 
 namespace Core.DAO
 {
@@ -65,8 +66,16 @@ namespace Core.DAO
                 detalhe.IdPedido = pedido.ID;
                 pedidoDetalheDAO.Salvar(detalhe);
 
-                // a cada iteração da lista pega a quantidade e valor do item que está sendo iterado
-                subtotal += (decimal)(detalhe.Quantidade * detalhe.ValorUnit);
+                if(pedido.Status.ID != 6)
+                {
+                    // a cada iteração da lista pega a quantidade e valor do item que está sendo iterado
+                    subtotal += (decimal)(detalhe.Quantidade * detalhe.ValorUnit);
+
+                    // Dando baixa no estoque
+                    Estoque estoque = ((Estoque)new EstoqueDAO().Consultar(new Estoque() { Livro = new Livro() { ID = detalhe.Livro.ID } }).ElementAt(0));
+                    estoque.Qtde -= detalhe.Quantidade;
+                    new EstoqueDAO(connection, false).Alterar(estoque);
+                }
             }
 
             // salvando os cartões utilizados no pedido
@@ -134,7 +143,7 @@ namespace Core.DAO
                 cupom.Status = 'A';
                 cupom.ValorCupom = (float)(valorCupons - subtotal);
                 cupom.CodigoCupom = "AUTOMATICO" + cupom.IdCliente + DateTime.Now.ToString("yyyyMMddHHmmss") + "$" + cupom.ValorCupom;
-                new CupomDAO(connection, false).Alterar(cupom);
+                new CupomDAO(connection, false).Salvar(cupom);
             }
 
             if (ctrlTransaction == true)
@@ -148,7 +157,44 @@ namespace Core.DAO
 
         public override void Alterar(EntidadeDominio entidade)
         {
-            throw new NotImplementedException();
+            if (connection.State == ConnectionState.Closed)
+                connection.Open();
+            Pedido pedido = (Pedido)entidade;
+
+            pst.CommandText = "UPDATE tb_pedido SET status_pedido_fk = :1 WHERE id_pedido = :2";
+            parameters = new NpgsqlParameter[]
+                {
+                    new NpgsqlParameter("1", pedido.Status.ID),
+                    new NpgsqlParameter("2", pedido.ID)
+                };
+
+            pst.Parameters.Clear();
+            pst.Parameters.AddRange(parameters);
+            pst.Connection = connection;
+            pst.CommandType = CommandType.Text;
+            pst.ExecuteNonQuery();
+
+            // verifica se status é igual a REPROVADO, 
+            // para assim, então, poder fazer a reentrada no estoque
+            if(pedido.Status.ID == 3)
+            {
+                // passa ID de pedido e consulta os itens inseridos no pedido
+                foreach (PedidoDetalhe detalhe in
+                    new PedidoDetalheDAO().Consultar(new PedidoDetalhe() { IdPedido = pedido.ID }).Cast<PedidoDetalhe>())
+                {
+                    // Reentrada no estoque
+                    Estoque estoque = ((Estoque)new EstoqueDAO().Consultar(new Estoque() { Livro = new Livro() { ID = detalhe.Livro.ID } } ).ElementAt(0));
+                    estoque.Qtde += detalhe.Quantidade;
+                    new EstoqueDAO(connection, false).Alterar(estoque);
+                }
+            }
+
+            if (ctrlTransaction == true)
+            {
+                pst.CommandText = "COMMIT WORK";
+                connection.Close();
+            }
+            return;
         }
 
         public override List<EntidadeDominio> Consultar(EntidadeDominio entidade)

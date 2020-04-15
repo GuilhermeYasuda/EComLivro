@@ -46,10 +46,10 @@ namespace Core.DAO
 
             if (!String.IsNullOrEmpty(status.Nome))
             {
-                sql.Append("AND nome_status_cupom = :2 ");
+                sql.Append("AND nome_status_pedido = :2 ");
             }
 
-            sql.Append("ORDER BY nome_status_cupom");
+            sql.Append("ORDER BY nome_status_pedido");
 
 
             pst.CommandText = sql.ToString();

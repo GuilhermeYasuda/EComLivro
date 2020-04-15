@@ -12,7 +12,7 @@ using EComLivro.Models;
 
 namespace EComLivro.Account
 {
-    public partial class Manage : System.Web.UI.Page
+    public partial class Manage : ViewGenerico
     {
         protected string SuccessMessage
         {
@@ -33,7 +33,7 @@ namespace EComLivro.Account
 
         public int LoginsCount { get; set; }
 
-        protected void Page_Load()
+        protected override void Page_Load(object sender, EventArgs e)
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
@@ -79,7 +79,6 @@ namespace EComLivro.Account
                 }
             }
         }
-
 
         private void AddErrors(IdentityResult result)
         {

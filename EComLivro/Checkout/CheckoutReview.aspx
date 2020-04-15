@@ -22,39 +22,60 @@
                             <asp:BoundField DataField="Livro.Titulo" HeaderText="Título" />
                             <asp:BoundField DataField="ValorUnit" HeaderText="Valor Unit." />
                             <asp:BoundField DataField="Quantidade" HeaderText="Quantidade" />
+
+
                         </Columns>
                     </asp:GridView>
 
-
+                    
                     <asp:DetailsView ID="ShipInfo" runat="server" AutoGenerateRows="false" GridLines="None" CellPadding="10" BorderStyle="None" CommandRowStyle-BorderStyle="None">
                         <Fields>
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <h3>Enviar para:</h3>
-                                    <br />
-                                    <asp:Label ID="Destinatario" runat="server" Text='<%#: Eval("EnderecoEntrega.Destinatario") %>'></asp:Label>
-                                    <asp:Label ID="TipoLogradouro" runat="server" Text='<%#: Eval("EnderecoEntrega.TipoLogradouro.Nome") %>'></asp:Label>
-                                    <asp:Label ID="Rua" runat="server" Text='<%#: Eval("EnderecoEntrega.Rua") %>'></asp:Label>
-                                    <br />
-                                    <asp:Label ID="Numero" runat="server" Text='<%#: Eval("EnderecoEntrega.Numero") %>'></asp:Label>
-                                    <br />
-                                    <asp:Label ID="Bairro" runat="server" Text='<%#: Eval("EnderecoEntrega.Bairro") %>'></asp:Label>
-                                    <asp:Label ID="Cidade" runat="server" Text='<%#: Eval("EnderecoEntrega.Cidade.Nome") %>'></asp:Label>
-                                    <asp:Label ID="Estado" runat="server" Text='<%#: Eval("EnderecoEntrega.Cidade.Estado.Sigla") %>'></asp:Label>
-                                    <asp:Label ID="CEP" runat="server" Text='<%#: Eval("EnderecoEntrega.CEP") %>'></asp:Label>
+                                    <asp:Label ID="Destinatario" runat="server"><%#: Eval("EnderecoEntrega.Destinatario") %></asp:Label>
+                                    <asp:Label ID="TipoLogradouro" runat="server"><%#: Eval("EnderecoEntrega.TipoLogradouro.Nome") %>&nbsp;<%#: Eval("EnderecoEntrega.Rua") %>,&nbsp;<%#: Eval("EnderecoEntrega.Numero") %></asp:Label>
+                                    <asp:Label ID="Bairro" runat="server"><%#: Eval("EnderecoEntrega.Bairro") %></asp:Label>
+                                    <asp:Label ID="Cidade" runat="server"><%#: Eval("EnderecoEntrega.Cidade.Nome") %>&nbsp;-&nbsp;<%#: Eval("EnderecoEntrega.Cidade.Estado.Sigla") %>,&nbsp;</asp:Label>
+                                    <asp:Label ID="CEP" runat="server">CEP: <%#: Eval("EnderecoEntrega.CEP") %></asp:Label>
                                     <asp:Label ID="Observacao" runat="server" Text='<%#: Eval("EnderecoEntrega.Observacao") %>'></asp:Label>
-                                    <p></p>
-                                    <h3>Order Total:</h3>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Left" />
+                            </asp:TemplateField>
+                        </Fields>
+                    </asp:DetailsView>
+                    
+
+                    <asp:DetailsView ID="StatusDetail" runat="server" AutoGenerateRows="false" GridLines="None" CellPadding="10" BorderStyle="None" CommandRowStyle-BorderStyle="None">
+                        <Fields>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <h3>Status do Pedido:</h3>
+                                    <asp:Label ID="Status" runat="server" Text='<%#: Eval("Status.Nome") %>'></asp:Label>
                                     <br />
+                                    <%# (Convert.ToInt32(Eval("Status.ID")) != 5) ? String.Empty : String.Format("<h3>Trocar:</h3><a class='btn btn-warning' href='TrocaPedido.aspx?idPedido={0}' title='Trocar'><div class='fas fa-undo'></div></a>", Eval("ID")) %>
+                                    </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Left" />
+                            </asp:TemplateField>
+                        </Fields>
+                    </asp:DetailsView>
+                    
+                    <asp:DetailsView ID="TotalDetail" runat="server" AutoGenerateRows="false" GridLines="None" CellPadding="10" BorderStyle="None" CommandRowStyle-BorderStyle="None">
+                        <Fields>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <br />
+                                    <h3>Total:</h3>
                                     <asp:Label ID="Total" runat="server" Text='<%#: Eval("Total", "{0:C}") %>'></asp:Label>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Left" />
                             </asp:TemplateField>
                         </Fields>
                     </asp:DetailsView>
+
                     <p></p>
                     <hr />
-                    <asp:Button ID="CheckoutConfirm" runat="server" Text="Complete Order" OnClick="CheckoutConfirm_Click" />
+                    <asp:Button ID="CheckoutConfirm" runat="server" Text="Continuar" OnClick="CheckoutConfirm_Click" />
 
                 </div>
 

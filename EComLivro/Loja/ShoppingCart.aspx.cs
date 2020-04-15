@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Collections.Specialized;
 using System.Collections;
 using System.Web.ModelBinding;
+using Dominio.Livro;
 
 namespace EComLivro.Loja
 {
@@ -33,6 +34,7 @@ namespace EComLivro.Loja
                     CartTotal.Visible = false;
                     CheckoutBtn.Visible = false;
                 }
+                //UpdateCartItems();
             }
         }
 
@@ -59,9 +61,25 @@ namespace EComLivro.Loja
                     cbRemove = (CheckBox)CartList.Rows[i].FindControl("Remover");
                     cartUpdates[i].RemoverItem = cbRemove.Checked;
 
+                    int quantidadeAnterior = GetShoppingCartItems().Cast<CartItem>().ElementAt(i).quantidade;
+
+                    Estoque estoque = commands["CONSULTAR"].execute(new Estoque() { Livro = new Dominio.Livro.Livro() { ID = cartUpdates[i].LivroId } } ).Entidades.Cast<Estoque>().ElementAt(0);
+
                     TextBox quantityTextBox = new TextBox();
                     quantityTextBox = (TextBox)CartList.Rows[i].FindControl("PurchaseQuantity");
-                    cartUpdates[i].PurchaseQuantity = Convert.ToInt16(quantityTextBox.Text.ToString());
+                    
+                    if(estoque.Qtde < Convert.ToInt32(quantityTextBox.Text))
+                    {
+                        cartUpdates[i].PurchaseQuantity = quantidadeAnterior;
+                        lblResultadoCarrinho.Text = "Quantidade em estoque do livro " + estoque.Livro.Titulo + " é de " + estoque.Qtde + " unidade(s)";
+                        lblResultadoCarrinho.Visible = true;
+                    } else
+                    {
+                        cartUpdates[i].PurchaseQuantity = Convert.ToInt16(quantityTextBox.Text.ToString());
+                        lblResultadoCarrinho.Text = "";
+                        lblResultadoCarrinho.Visible = false;
+                    }
+                    
                 }
                 usersShoppingCart.UpdateShoppingCartDatabase(cartId, cartUpdates);
                 CartList.DataBind();
@@ -86,7 +104,11 @@ namespace EComLivro.Loja
 
         protected void UpdateBtn_Click(object sender, EventArgs e)
         {
-            UpdateCartItems();
+            UpdateCartItems(); 
+            if(GetShoppingCartItems().Count == 0)
+            {
+                Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
+            }
         }
 
         protected void CheckoutBtn_Click(object sender, EventArgs e)

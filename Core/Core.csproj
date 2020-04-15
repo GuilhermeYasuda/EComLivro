@@ -133,6 +133,9 @@
     <Compile Include="Negocio\ParametroExcluir.cs" />
     <Compile Include="Negocio\DeleteClienteXEnderecos.cs" />
     <Compile Include="Negocio\ValidadorAtivacaoInativacaoLivro.cs" />
+    <Compile Include="Negocio\ValidadorAtualizaPedido.cs" />
+    <Compile Include="Negocio\ValidadorExistenciaEmail.cs" />
+    <Compile Include="Negocio\ValidadorExistenciaCPF.cs" />
     <Compile Include="Negocio\ValidadorStatusPedido.cs" />
     <Compile Include="Negocio\ValidadorDadosPedido.cs" />
     <Compile Include="Negocio\ValidadorDadosEstoque.cs" />

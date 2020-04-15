@@ -36,9 +36,11 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <%--<asp:Panel runat="server" GroupingText="Filtro" >
-                        Tipo do Documento: <asp:DropDownList AutoPostBack="true" ID="dropIdDocumento" DataTextField="Name" DataValueField="ID" CssClass="form-control" runat="server" OnSelectedIndexChanged="dropIdDocumento_SelectedIndexChanged"></asp:DropDownList>
-                    </asp:Panel>--%>
+                    
+                    <asp:Label ID="lblResultadoAtualiza" CssClass="text-danger" runat="server" Visible="false"></asp:Label>
+                    <asp:Panel runat="server" GroupingText="Filtro" >
+                        Status do Pedido: <asp:DropDownList AutoPostBack="true" ID="dropIdStatus" DataTextField="Name" DataValueField="ID" CssClass="form-control" runat="server" OnSelectedIndexChanged="dropIdStatus_SelectedIndexChanged" ></asp:DropDownList>
+                    </asp:Panel>
                     
                     <br />
                     <div id="divTable" class="table table-bordered" runat="server" >

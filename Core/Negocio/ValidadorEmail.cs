@@ -1,4 +1,5 @@
 ﻿using Core.Core;
+using Core.DAO;
 using Dominio;
 using Dominio.Cliente;
 using System;
@@ -24,7 +25,7 @@ namespace Core.Negocio
 
                 if (!rg.IsMatch(email))
                 {
-                    sb.Append("EMAIL INVÁLIDO! <br />");
+                    sb.Append("E-MAIL INVÁLIDO! <br />");
                 }
 
             }

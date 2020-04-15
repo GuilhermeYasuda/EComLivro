@@ -236,8 +236,11 @@
     <Content Include="Account\LoginBackup.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
+    <Content Include="Account\ManageAccount.aspx" />
+    <Content Include="Account\ManageBakup.aspx" />
     <Content Include="Account\ManageLogins.aspx" />
     <Content Include="Account\ManagePassword.aspx" />
+    <Content Include="Account\ManagePasswordBackup.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\RegisterBackup.aspx" />
     <Content Include="Account\Register.aspx" />
@@ -250,6 +253,7 @@
     <Content Include="Adm\Analise.aspx" />
     <Content Include="Adm\Animation.aspx" />
     <Content Include="Adm\AtivacaoLivro.aspx" />
+    <Content Include="Adm\AtualizaPedido.aspx" />
     <Content Include="Adm\Blank.aspx" />
     <Content Include="Adm\Border.aspx" />
     <Content Include="Adm\Buttons.aspx" />
@@ -262,19 +266,25 @@
     <Content Include="Adm\Dashboard.aspx" />
     <Content Include="Adm\EstoqueLivro.aspx" />
     <Content Include="Adm\forgot-password.html" />
+    <Content Include="Adm\GeraCupomTroca.aspx" />
     <Content Include="Adm\ListaCliente.aspx" />
+    <Content Include="Adm\ListaCupom.aspx" />
     <Content Include="Adm\ListaEstoque.aspx" />
     <Content Include="Adm\ListaLivro.aspx" />
     <Content Include="Adm\ListaPedidos.aspx" />
     <Content Include="Adm\login.html" />
     <Content Include="Adm\Others.aspx" />
+    <Content Include="Adm\ReentradaEstoqueTroca.aspx" />
     <Content Include="Adm\register.html" />
     <Content Include="Adm\Tables.aspx" />
     <Content Include="Checkout\CheckoutCancel.aspx" />
     <Content Include="Checkout\CheckoutComplete.aspx" />
     <Content Include="Checkout\CheckoutError.aspx" />
+    <Content Include="Checkout\GerarPedidoTroca.aspx" />
+    <Content Include="Checkout\TrocaPedido.aspx" />
     <Content Include="Checkout\CheckoutReview.aspx" />
     <Content Include="Checkout\CheckoutStart.aspx" />
+    <Content Include="Checkout\ListaMeusPedidos.aspx" />
     <Content Include="Cliente\ListaCliente.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\annotations\popup.css" />
@@ -335,8 +345,12 @@
     <Content Include="fonts\helvetica_neu_bold-webfont.woff" />
     <Content Include="fonts\helvetica_neu_bold-webfont.woff2" />
     <Content Include="img\02.psd" />
+    <Content Include="img\core-img\logo.png" />
+    <Content Include="img\core-img\logo2.png" />
+    <Content Include="img\core-img\logo3.png" />
     <Content Include="Loja\MastePageLoja.Master" />
     <Content Include="Checkout\Web.config" />
+    <Content Include="Adm\Web.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="img\01a.jpg" />
@@ -357,8 +371,6 @@
     <Content Include="img\core-img\cart.png" />
     <Content Include="img\core-img\favicon.ico" />
     <Content Include="img\core-img\favorites.png" />
-    <Content Include="img\core-img\logo.png" />
-    <Content Include="img\core-img\logo2.png" />
     <Content Include="img\core-img\paypal.png" />
     <Content Include="img\core-img\search.png" />
     <Content Include="img\product-img\pro-big-1.jpg" />
@@ -2246,6 +2258,20 @@
     <Compile Include="Account\Manage.aspx.designer.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\ManageAccount.aspx.cs">
+      <DependentUpon>ManageAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManageAccount.aspx.designer.cs">
+      <DependentUpon>ManageAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManageBakup.aspx.cs">
+      <DependentUpon>ManageBakup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManageBakup.aspx.designer.cs">
+      <DependentUpon>ManageBakup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\ManageLogins.aspx.cs">
       <DependentUpon>ManageLogins.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2259,6 +2285,13 @@
     </Compile>
     <Compile Include="Account\ManagePassword.aspx.designer.cs">
       <DependentUpon>ManagePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManagePasswordBackup.aspx.cs">
+      <DependentUpon>ManagePasswordBackup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManagePasswordBackup.aspx.designer.cs">
+      <DependentUpon>ManagePasswordBackup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
@@ -2344,6 +2377,13 @@
     <Compile Include="Adm\AtivacaoLivro.aspx.designer.cs">
       <DependentUpon>AtivacaoLivro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Adm\AtualizaPedido.aspx.cs">
+      <DependentUpon>AtualizaPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\AtualizaPedido.aspx.designer.cs">
+      <DependentUpon>AtualizaPedido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Adm\Blank.aspx.cs">
       <DependentUpon>Blank.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2421,12 +2461,26 @@
     <Compile Include="Adm\EstoqueLivro.aspx.designer.cs">
       <DependentUpon>EstoqueLivro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Adm\GeraCupomTroca.aspx.cs">
+      <DependentUpon>GeraCupomTroca.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\GeraCupomTroca.aspx.designer.cs">
+      <DependentUpon>GeraCupomTroca.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Adm\ListaCliente.aspx.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Adm\ListaCliente.aspx.designer.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\ListaCupom.aspx.cs">
+      <DependentUpon>ListaCupom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\ListaCupom.aspx.designer.cs">
+      <DependentUpon>ListaCupom.aspx</DependentUpon>
     </Compile>
     <Compile Include="Adm\ListaEstoque.aspx.cs">
       <DependentUpon>ListaEstoque.aspx</DependentUpon>
@@ -2462,6 +2516,13 @@
     </Compile>
     <Compile Include="Adm\Others.aspx.designer.cs">
       <DependentUpon>Others.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adm\ReentradaEstoqueTroca.aspx.cs">
+      <DependentUpon>ReentradaEstoqueTroca.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adm\ReentradaEstoqueTroca.aspx.designer.cs">
+      <DependentUpon>ReentradaEstoqueTroca.aspx</DependentUpon>
     </Compile>
     <Compile Include="Adm\Tables.aspx.cs">
       <DependentUpon>Tables.aspx</DependentUpon>
@@ -2504,6 +2565,20 @@
     <Compile Include="Checkout\CheckoutError.aspx.designer.cs">
       <DependentUpon>CheckoutError.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Checkout\GerarPedidoTroca.aspx.cs">
+      <DependentUpon>GerarPedidoTroca.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\GerarPedidoTroca.aspx.designer.cs">
+      <DependentUpon>GerarPedidoTroca.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\TrocaPedido.aspx.cs">
+      <DependentUpon>TrocaPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\TrocaPedido.aspx.designer.cs">
+      <DependentUpon>TrocaPedido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Checkout\CheckoutReview.aspx.cs">
       <DependentUpon>CheckoutReview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2517,6 +2592,13 @@
     </Compile>
     <Compile Include="Checkout\CheckoutStart.aspx.designer.cs">
       <DependentUpon>CheckoutStart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\ListaMeusPedidos.aspx.cs">
+      <DependentUpon>ListaMeusPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\ListaMeusPedidos.aspx.designer.cs">
+      <DependentUpon>ListaMeusPedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cliente\ListaCliente.aspx.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>
@@ -2549,6 +2631,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\RoleActions.cs" />
     <Compile Include="Logic\ShoppingCartActions.cs" />
     <Compile Include="Loja\AddToCart.aspx.cs">
       <DependentUpon>AddToCart.aspx</DependentUpon>

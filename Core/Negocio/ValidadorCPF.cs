@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio;
 using Dominio.Cliente;
+using Core.DAO;
 
 namespace Core.Negocio
 {
