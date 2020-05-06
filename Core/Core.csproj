@@ -93,6 +93,8 @@
     <Compile Include="Core\IFachada.cs" />
     <Compile Include="Core\IStrategy.cs" />
     <Compile Include="DAO\AbstractDAO.cs" />
+    <Compile Include="DAO\AnaliseDAO.cs" />
+    <Compile Include="DAO\LivroXCategoriaDAO.cs" />
     <Compile Include="DAO\PedidoDAO.cs" />
     <Compile Include="DAO\PedidoDetalheDAO.cs" />
     <Compile Include="DAO\CCPedidoDAO.cs" />

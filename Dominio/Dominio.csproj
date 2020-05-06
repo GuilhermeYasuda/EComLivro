@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analise\Analise.cs" />
     <Compile Include="CategoriaMotivo.cs" />
     <Compile Include="Cliente\Bandeira.cs" />
     <Compile Include="Cliente\CartaoCredito.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Livro\Estoque.cs" />
     <Compile Include="Livro\GrupoPrecificacao.cs" />
     <Compile Include="Livro\Livro.cs" />
+    <Compile Include="Livro\LivroXCategoria.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Venda\CartaoCreditoPedido.cs" />

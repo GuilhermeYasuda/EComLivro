@@ -24,9 +24,7 @@
                 },
 
                 xAxis: {
-                    accessibility: {
-                        rangeDescription: 'Range: 2010 to 2017'
-                    }
+                    <%=xAxis.ToString() %>
                 },
 
                 legend: {
@@ -39,27 +37,13 @@
                     series: {
                         label: {
                             connectorAllowed: false
-                        },
-                        pointStart: 2010
+                        }
                     }
                 },
 
-                series: [{
-                    name: 'Categoria 1',
-                    data: [500, 1500, 1000, 2000, 1500, 2500, 1000, 1500]
-                }, {
-                    name: 'Categoria 2',
-                    data: [1500, 1000, 2500, 1500, 2000, 1000, 1500, 500]
-                }, {
-                    name: 'Categoria 3',
-                    data: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
-                }, {
-                    name: 'Categoria 4',
-                    data: [null, null, 500, 1000, 1500, 2000, 2500, 3000]
-                }, {
-                    name: 'Categoria 5',
-                    data: [null, 5, 10, 30, 90, 270, 810, 2430]
-                }],
+                series: [
+                    <%=series.ToString() %>
+                ],
 
                 responsive: {
                     rules: [{
@@ -122,7 +106,7 @@
                                     <%--                                        <a href="#" class="btn btn-primary btn-circle">
                                             <i class="fas fa-fw fa-redo-alt"></i>
                                         </a>--%>
-                                    <asp:LinkButton ID="btnFiltraGrafico" CssClass="btn btn-primary btn-circle" runat="server">
+                                    <asp:LinkButton ID="btnFiltraGrafico" CssClass="btn btn-primary btn-circle" runat="server" OnClick="btnFiltraGrafico_Click">
                                             <i class="fas fa-fw fa-redo-alt"></i>
                                     </asp:LinkButton>
                                     <%--<asp:Button ID="btnFiltraGrafico" CssClass="btn btn-primary btn-circle" runat="server" />--%>
@@ -144,6 +128,8 @@
                             </p>--%>
                         </figure>
                     </div>
+
+                    <div class="card-footer small text-muted" id="lblRodaPeTabela" runat="server"></div>
                 </div>
 
                 <!-- Bar Chart -->

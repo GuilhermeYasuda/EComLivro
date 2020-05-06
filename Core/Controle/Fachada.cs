@@ -11,6 +11,7 @@ using Core.Negocio;
 using Dominio.Cliente;
 using Dominio.Livro;
 using Dominio.Venda;
+using Dominio.Analise;
 
 namespace Core.Controle
 {
@@ -77,6 +78,7 @@ namespace Core.Controle
             ClientePFDAO clientePFDAO = new ClientePFDAO();
             CategoriaMotivoDAO categoriaMotivoDAO = new CategoriaMotivoDAO();
             CategoriaLivroDAO categoriaLivroDAO = new CategoriaLivroDAO();
+            LivroXCategoriaDAO livroXCategoriaDAO = new LivroXCategoriaDAO();
             EditoraDAO editoraDAO = new EditoraDAO();
             LivroDAO livroDAO = new LivroDAO();
             EstoqueDAO estoqueDAO = new EstoqueDAO();
@@ -88,6 +90,7 @@ namespace Core.Controle
             PedidoDetalheDAO pedidoDetalheDAO = new PedidoDetalheDAO();
             CCPedidoDAO ccPedidoDAO = new CCPedidoDAO();
             PedidoDAO pedidoDAO = new PedidoDAO();
+            AnaliseDAO analiseDAO = new AnaliseDAO();
 
             // adicionando as DAOs ao Mapa daos já indicando o indice (nome da classe domínio) de cada um
             daos.Add(typeof(Endereco).Name, enderecoDAO);
@@ -104,6 +107,7 @@ namespace Core.Controle
             daos.Add(typeof(ClientePF).Name, clientePFDAO);
             daos.Add(typeof(CategoriaMotivo).Name, categoriaMotivoDAO);
             daos.Add(typeof(Categoria).Name, categoriaLivroDAO);
+            daos.Add(typeof(LivroXCategoria).Name, livroXCategoriaDAO);
             daos.Add(typeof(Editora).Name, editoraDAO);
             daos.Add(typeof(Livro).Name, livroDAO);
             daos.Add(typeof(Estoque).Name, estoqueDAO);
@@ -115,6 +119,7 @@ namespace Core.Controle
             daos.Add(typeof(PedidoDetalhe).Name, pedidoDetalheDAO);
             daos.Add(typeof(CartaoCreditoPedido).Name, ccPedidoDAO);
             daos.Add(typeof(Pedido).Name, pedidoDAO);
+            daos.Add(typeof(Analise).Name, analiseDAO);
 
             #region CRIAÇÃO DA LISTA DE STRATEGYS
 
@@ -308,6 +313,17 @@ namespace Core.Controle
              */
 
             /*
+             * LivroXCategoria - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarLivroXCategoria = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarLivroXCategoria = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirLivroXCategoria = new List<IStrategy>();
+            List<IStrategy> rnsConsultarLivroXCategoria = new List<IStrategy>();
+            /*
+             * LivroXCategoria - FIM ---------------------------------------------------------------------
+             */
+
+            /*
              * EDITORA - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
              */
             //List<IStrategy> rnsSalvarEditora = new List<IStrategy>();
@@ -437,6 +453,17 @@ namespace Core.Controle
             List<IStrategy> rnsConsultarPedido = new List<IStrategy>();
             /*
              * Pedido - FIM ---------------------------------------------------------------------
+             */
+
+            /*
+             * Analise - COMEÇO DA CRIAÇÃO DA LISTA DE STRATEGYS----------------------------------
+             */
+            //List<IStrategy> rnsSalvarAnalise = new List<IStrategy>();
+            //List<IStrategy> rnsAlterarAnalise = new List<IStrategy>();
+            //List<IStrategy> rnsExcluirAnalise = new List<IStrategy>();
+            List<IStrategy> rnsConsultarAnalise = new List<IStrategy>();
+            /*
+             * Analise - FIM ---------------------------------------------------------------------
              */
 
             #endregion
@@ -625,6 +652,18 @@ namespace Core.Controle
              */
 
             /*
+             * LivroXCategoria - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsLivroXCategoria = new Dictionary<string, List<IStrategy>>();
+            //rnsLivroXCategoria.Add("SALVAR", rnsSalvarLivroXCategoria);
+            //rnsLivroXCategoria.Add("ALTERAR", rnsAlterarLivroXCategoria);
+            //rnsLivroXCategoria.Add("EXCLUIR", rnsExcluirLivroXCategoria);
+            rnsLivroXCategoria.Add("CONSULTAR", rnsConsultarLivroXCategoria);
+            /*
+             * LivroXCategoria - FIM ----------------------------------------------------------------------------
+             */
+
+            /*
              * EDITORA - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
              */
             Dictionary<string, List<IStrategy>> rnsEditora = new Dictionary<string, List<IStrategy>>();
@@ -756,6 +795,18 @@ namespace Core.Controle
              * Pedido - FIM ----------------------------------------------------------------------------
              */
 
+            /*
+             * Analise - COMEÇO DA CRIAÇÃO DA LISTA DE REGAS PARA CADA OPERAÇÂO -------------------------
+             */
+            Dictionary<string, List<IStrategy>> rnsAnalise = new Dictionary<string, List<IStrategy>>();
+            //rnsAnalise.Add("SALVAR", rnsSalvarAnalise);
+            //rnsAnalise.Add("ALTERAR", rnsAlterarAnalise);
+            //rnsAnalise.Add("EXCLUIR", rnsExcluirAnalise);
+            rnsAnalise.Add("CONSULTAR", rnsConsultarAnalise);
+            /*
+             * Analise - FIM ----------------------------------------------------------------------------
+             */
+
             #endregion
 
             // adicionando ao mapa geral que conterá todos os mapas
@@ -773,6 +824,7 @@ namespace Core.Controle
             rns.Add(typeof(ClientePF).Name, rnsClientePF);
             rns.Add(typeof(CategoriaMotivo).Name, rnsCategoriaMotivo);
             rns.Add(typeof(Categoria).Name, rnsCategoriaLivro);
+            rns.Add(typeof(LivroXCategoria).Name, rnsLivroXCategoria);
             rns.Add(typeof(Editora).Name, rnsEditora);
             rns.Add(typeof(Livro).Name, rnsLivro);
             rns.Add(typeof(Estoque).Name, rnsEstoque);
@@ -784,6 +836,7 @@ namespace Core.Controle
             rns.Add(typeof(CartaoCreditoPedido).Name, rnsCCPedido);
             rns.Add(typeof(PedidoDetalhe).Name, rnsPedidoDetalhe);
             rns.Add(typeof(Pedido).Name, rnsPedido);
+            rns.Add(typeof(Analise).Name, rnsAnalise);
 
         }
         // FIM do CONSTRUTOR da Fachada -------------------------

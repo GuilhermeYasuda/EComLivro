@@ -36,14 +36,14 @@
                                     <dd>
                                         <asp:HyperLink NavigateUrl="/Account/ManageAccount" Text="[Alterar]" Visible="true" ID="AlterarDadosCadastrais" runat="server" />
                                     </dd>
-                                    <%--<dt>Endereços:</dt>
+                                    <dt>Endereços:</dt>
                                     <dd>
-                                        <asp:HyperLink NavigateUrl="/Account/ManageAccount" Text="[Gerenciar]" Visible="true" ID="HyperLink1" runat="server" />
+                                        <asp:HyperLink NavigateUrl="/Account/ManageAccount" Text="[Gerenciar]" Visible="true" ID="GerenciarEnderecos" runat="server" />
                                     </dd>
                                     <dt>Cartões de Crédito:</dt>
                                     <dd>
-                                        <asp:HyperLink NavigateUrl="/Account/ManageAccount" Text="[Gerenciar]" Visible="true" ID="HyperLink2" runat="server" />
-                                    </dd>--%>
+                                        <asp:HyperLink NavigateUrl="/Account/ManageAccount" Text="[Gerenciar]" Visible="true" ID="GerenciarCartoes" runat="server" />
+                                    </dd>
                                     <%--<dt>Logins externos:</dt>
                                     <dd><%: LoginsCount %>
                                         <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server" />

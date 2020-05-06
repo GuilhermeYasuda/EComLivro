@@ -49,5 +49,23 @@ namespace EComLivro.Account
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink AlterarDadosCadastrais;
+
+        /// <summary>
+        /// Controle GerenciarEnderecos.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink GerenciarEnderecos;
+
+        /// <summary>
+        /// Controle GerenciarCartoes.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink GerenciarCartoes;
     }
 }
